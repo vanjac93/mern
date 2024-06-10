@@ -5,7 +5,7 @@
     "*.js": "javascriptreact"
   },
   "files.eol": "\n",
-  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnType": false, // required
   "editor.formatOnPaste": false, // optional
   "editor.formatOnSave": true, // optional
@@ -13,6 +13,6 @@
   // "files.autoSave": "onFocusChange", // optional but recommended
   "vs-code-prettier-eslint.prettierLast": false,
   "[typescriptreact]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

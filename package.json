@@ -5,9 +5,11 @@
   "scripts": {
     "client:dev": "nx start client",
     "server:dev": "nodemon server/src/main.ts",
-    "watch-tsc": "tsc --noEmit -w -p ./client/tsconfig.json"
+    "watch-tsc": "tsc --noEmit -w -p ./client/tsconfig.json",
+    "lint": "eslint client",
+    "format": "prettier --write 'client/src/**/*.{js,jsx,ts,tsx,json}' --config ./.prettierrc.json"
   },
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@nx/esbuild": "19.2.1",
     "@nx/eslint": "19.2.1",
@@ -60,8 +62,10 @@
   "dependencies": {
     "axios": "^1.6.0",
     "express": "~4.18.1",
+    "i18next": "^23.11.5",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-i18next": "^14.1.2",
     "react-is": "18.3.1",
     "react-router-dom": "6.11.2",
     "styled-components": "5.3.6",

@@ -10,10 +10,13 @@
     "noEmit": true,
     "module": "ESNext",
     "rootDir": ".",
+    "paths": {
+      "@client/*": ["client/src/*"]
+    }
   },
   "include": ["./**/*", "*.tsx"],
   "files": [],
   "exclude": ["node_modules"],
-  
+
   "extends": "../tsconfig.base.json"
 }

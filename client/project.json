@@ -9,7 +9,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["vite", "npm run watch-tsc"]
+        "commands": ["vite client", "npm run watch-tsc"]
       }
     }
   }
