@@ -6,7 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["vite/client"],
+    "types": ["vite/client", "./src/styled.d.ts"],
     "noEmit": true,
     "module": "ESNext",
     "rootDir": ".",
