@@ -1,32 +1,43 @@
 import i18n from '@client/services/i18n/i18n'
 
 export interface NavLink {
-  to: string
+  to?: string
   text: string
+  id: string
 }
 
 export const PRIMARY_LINKS: NavLink[] = [
   {
-    text: i18n.t('Home'),
-    to: '/'
+    id: 'product',
+    text: i18n.t('Product')
   },
   {
-    text: i18n.t('About'),
-    to: '/about'
+    id: 'solutions',
+    text: i18n.t('Solutions')
   },
   {
-    text: i18n.t('Tailwind'),
-    to: '/tailwind'
+    id: 'pricing',
+    text: i18n.t('Pricing'),
+    to: '/pricing'
+  },
+  {
+    id: 'resources',
+    text: i18n.t('Resources')
+  },
+  {
+    id: 'contact',
+    text: i18n.t('Contact'),
+    to: '/contact'
   }
 ]
 
-export const SECONDARY_LINKS: NavLink[] = [
-  {
-    text: i18n.t('Github'),
-    to: '/code'
-  },
-  {
-    text: i18n.t('Better'),
-    to: '/better'
-  }
-]
+// export const SECONDARY_LINKS: NavLink[] = [
+//   {
+//     text: i18n.t('Github'),
+//     to: '/code'
+//   },
+//   {
+//     text: i18n.t('Better'),
+//     to: '/better'
+//   }
+// ]

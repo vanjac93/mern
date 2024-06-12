@@ -30,15 +30,10 @@ type BreakpointsType = Array<string> & {
   xxl?: string
 }
 
-console.log('aliases', breakpointsAliases)
-console.log('ob.k', Object.keys(breakpointsAliases))
-
 export const breakpoints: BreakpointsType = Object.keys(breakpointsAliases).map(
   // @ts-ignore
   (x) => breakpointsAliases[x] + 'px'
 )
-
-console.log('after', breakpoints)
 
 breakpoints.xs = breakpoints[0]
 breakpoints.mobile = breakpoints[1]
@@ -47,5 +42,3 @@ breakpoints.md = breakpoints[3]
 breakpoints.lg = breakpoints[4]
 breakpoints.xl = breakpoints[5]
 breakpoints.xxl = breakpoints[6]
-
-console.log('2', breakpoints)
