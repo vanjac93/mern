@@ -1,32 +1,34 @@
-import { Flex } from '@client/components/layout/Box'
+import { Box, Flex } from '@client/components/layout/Box'
 import { Typography } from '@client/components/layout/Typography'
 import { ReactNode } from 'react'
+import { IconContext } from 'react-icons'
+import { Link } from 'react-router-dom'
 
-export interface MenuCardType {
+export interface CardType {
   title: string
   description?: string
   icon: ReactNode
+  link: string
 }
 
-export default function MenuCard({ card }: { card: MenuCardType }) {
-  const { title, description, icon } = card
-
-  if (!description) {
-    return (
-      <Flex gap={8}>
-        {icon}
-        <Typography>{title}</Typography>
-      </Flex>
-    )
-  }
+export default function Card({ card }: { card: CardType }) {
+  const { title, description, icon, link } = card
 
   return (
-    <Flex gap={8}>
-      {icon}
-      <Flex flexDirection="column" gap={8}>
-        <Typography>{title}</Typography>
-        <Typography color="green">{description}</Typography>
-      </Flex>
+    <Flex flexDirection="column">
+      <Link to={link}>
+        <Flex gap="1rem">
+          <Box>
+            <IconContext.Provider value={{ size: '2rem' }}>{icon}</IconContext.Provider>
+          </Box>
+          <Typography className="title">{title}</Typography>
+        </Flex>
+      </Link>
+      {description && (
+        <Typography pl="3rem" color="green">
+          {description}
+        </Typography>
+      )}
     </Flex>
   )
 }

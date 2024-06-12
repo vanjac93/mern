@@ -44,7 +44,7 @@ const BaseTriggerCSS = css`
   border-radius: 0;
   border-bottom: 2px solid transparent;
   &[data-state='open'] {
-    border-bottom-color: ${({ theme }) => theme.colors.primary};
+    border-bottom-color: ${({ theme }) => theme.colors.secondary};
   }
 
   &[data-state='open'] > .caret {

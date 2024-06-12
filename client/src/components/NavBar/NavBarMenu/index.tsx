@@ -22,13 +22,26 @@ export default function NavBarMenu() {
 }
 
 const StyledNavViewportContainer = styled(Box)`
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
-  width: 100%;
-  top: 100%;
-  left: 0;
+  top: 70px;
+  left: 50%;
+  margin: 0 auto;
   perspective: 2000px;
+  transform: translateX(-50%);
+
+  ${({ theme }) => theme.mq.xl} {
+    width: 75vw;
+  }
+
+  ${({ theme }) => theme.mq.lg} {
+    width: 85vw;
+  }
+
+  ${({ theme }) => theme.mq.md} {
+    width: 100vw;
+  }
 `
 
 const Container = styled.div`
@@ -44,7 +57,7 @@ const StyledNavViewport = styled(NavigationMenu.Viewport)`
   margin-top: 10px;
   width: 100%;
   background-color: white;
-  border-radius: 6px;
+  border-radius: 0 0 8px 8px;
   overflow: hidden;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   height: var(--radix-navigation-menu-viewport-height);

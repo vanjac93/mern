@@ -2,13 +2,16 @@ import styled from 'styled-components'
 import Logo from './Logo'
 import NavBarMenu from './NavBarMenu'
 import NavBarUser from './NavBarUser'
+import { Flex } from '../layout/Box'
 
 export default function NavBar() {
   return (
     <StyledNav>
       <Logo />
-      <NavBarMenu />
-      <NavBarUser />
+      <Flex>
+        <NavBarMenu />
+        <NavBarUser />
+      </Flex>
     </StyledNav>
   )
 }
@@ -16,8 +19,8 @@ export default function NavBar() {
 const StyledNav = styled.nav`
   height: 80px;
   display: flex;
-  background-color: aliceblue;
+  background-color: #fff;
   align-items: center;
-  justify-content: space-between;
   padding: 1rem 2rem;
+  gap: 3rem;
 `
