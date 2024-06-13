@@ -54,11 +54,11 @@ body {
   color: white !important;
 }
 
-a{
+a {
   text-decoration: none;
-  color:${(props) => props.theme.colors.primary}; ;
+  color:${(props) => props.theme.colors.text}; ;
   &:hover{
-    color:${(props) => props.theme.colors.secondary}; ;
+    color:${(props) => props.theme.colors.primary}; ;
 
   }
 }

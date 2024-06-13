@@ -17,10 +17,10 @@ export default function Card({ card }: { card: CardType }) {
   return (
     <Flex flexDirection="column">
       <Link to={link}>
-        <Flex gap="1rem">
-          <Box>
+        <Flex alignItems="center" gap="1rem">
+          <Flex alignItems="center" justifyContent="space-around">
             <IconContext.Provider value={{ size: '2rem' }}>{icon}</IconContext.Provider>
-          </Box>
+          </Flex>
           <Typography className="title">{title}</Typography>
         </Flex>
       </Link>

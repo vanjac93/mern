@@ -8,7 +8,7 @@ export default function NavBar() {
   return (
     <StyledNav>
       <Logo />
-      <Flex>
+      <Flex flex={1} alignItems="center" justifyContent="space-between">
         <NavBarMenu />
         <NavBarUser />
       </Flex>

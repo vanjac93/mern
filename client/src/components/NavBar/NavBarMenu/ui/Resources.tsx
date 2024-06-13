@@ -47,9 +47,11 @@ export default function Resources() {
           <Typography fontWeight={800} fontSize="20px" mb="1rem">
             {t('Learn with me')}
           </Typography>
-          {CARDS.map((card, i) => (
-            <Card key={i} card={card} />
-          ))}
+          <Flex flexDirection="column" gap="1rem">
+            {CARDS.map((card, i) => (
+              <Card key={i} card={card} />
+            ))}
+          </Flex>
         </Flex>
       </Flex>
     </MenuItemContent>
