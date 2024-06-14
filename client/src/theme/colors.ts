@@ -6,7 +6,9 @@ const colors: ThemeType['colors'] = {
   text: 'black',
   primary: '#0033ff',
   secondary: 'orange',
-  borderSecondary: 'yellow'
+  borderSecondary: 'yellow',
+  uiBackground: 'green',
+  error: 'red'
 }
 
 export default colors

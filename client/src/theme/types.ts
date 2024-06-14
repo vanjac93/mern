@@ -23,6 +23,8 @@ interface ThemeColorsType {
   primary: string
   secondary: string
   borderSecondary: string
+  uiBackground: string
+  error: string
 }
 
 export type MediaQueries = {
