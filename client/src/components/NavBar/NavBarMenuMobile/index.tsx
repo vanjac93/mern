@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { RiMenuLine } from 'react-icons/ri'
 import { useState } from 'react'
 import { RiCloseLargeLine } from 'react-icons/ri'
-import MobileSidebar from './MobileSidebar'
+import MobileSidebar from './components/Sidebar'
 
 export default function NavBarMenuMobile() {
   const [open, setOpen] = useState(false)

@@ -5,12 +5,12 @@ import {
   PRODUCT_MENU_SIDEBAR,
   SOLUTIONS_MENU,
   SOLUTIONS_MENU_SIDEBAR
-} from '../NavBarMenu/util'
-import MenuItemContent from '../NavBarMenu/components/MenuContent'
+} from '../../NavBarMenu/util'
+import MenuItemContent from '../../NavBarMenu/components/MenuContent'
 import { Link } from 'react-router-dom'
 import { Flex } from '@client/components/layout/Box'
 import { Typography } from '@client/components/layout/Typography'
-import { CardType } from '../NavBarMenu/components/Card'
+import { CardType } from '../../NavBarMenu/components/Card'
 import { Divider } from '@client/components/layout/Divider'
 
 interface SidebarProps {

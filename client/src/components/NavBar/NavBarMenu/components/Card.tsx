@@ -1,4 +1,4 @@
-import { Box, Flex } from '@client/components/layout/Box'
+import { Flex } from '@client/components/layout/Box'
 import { Typography } from '@client/components/layout/Typography'
 import { ReactNode } from 'react'
 import { IconContext } from 'react-icons'
