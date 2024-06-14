@@ -1,8 +1,9 @@
-import { Box, Flex } from '@client/components/layout/Box'
+import { Flex } from '@client/components/layout/Box'
 import { Typography } from '@client/components/layout/Typography'
 import { ReactNode, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
+import { Link } from 'react-router-dom'
 
 interface Props {
   items: ItemType[]
@@ -25,6 +26,7 @@ export default function MobileNavigation(props: Props) {
           const { id, text } = item
           return (
             <Flex
+              as={Link}
               p="1rem"
               onClick={() => setActiveItem(item)}
               key={id}
@@ -37,7 +39,7 @@ export default function MobileNavigation(props: Props) {
         })}
       </Flex>
       <Flex flexDirection="column" className="active-menu">
-        <Flex p="1rem" onClick={() => setActiveItem(null)} alignItems="center" gap="1rem">
+        <Flex as={Link} p="1rem" onClick={() => setActiveItem(null)} alignItems="center" gap="1rem">
           <IoIosArrowBack size={24} />
           <Typography fontSize={24}>{activeItem?.text}</Typography>
         </Flex>
