@@ -6,6 +6,9 @@ export interface ThemeType {
   isRtl: boolean
   colors: ThemeColorsType
   font: ThemeFontType
+  menu: {
+    height: string
+  }
 }
 
 interface ThemeFontType {
@@ -24,7 +27,6 @@ interface ThemeColorsType {
 
 export type MediaQueries = {
   xs: string
-  mobile: string
   sm: string
   md: string
   lg: string

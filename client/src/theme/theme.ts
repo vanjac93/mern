@@ -6,6 +6,9 @@ const theme: ThemeType = {
   mq: mediaQueries,
   breakpoints,
   isRtl: true,
+  menu: {
+    height: '80px'
+  },
   colors,
   font: {
     ltr: 'Roboto, sans-serif',

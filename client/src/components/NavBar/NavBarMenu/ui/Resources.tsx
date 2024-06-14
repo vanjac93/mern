@@ -1,30 +1,16 @@
 import { useTranslation } from 'react-i18next'
 import MenuItemContent from '../components/MenuContent'
-import marketingImg from '@client/assets/marketing.jpg'
 import { Flex } from '@client/components/layout/Box'
 import { Typography } from '@client/components/layout/Typography'
-import Card, { CardType } from '../components/Card'
-import i18n from '@client/services/i18n/i18n'
-import { CiCircleQuestion, CiMicrophoneOn } from 'react-icons/ci'
-import { MdOutlineOndemandVideo } from 'react-icons/md'
+import Card from '../components/Card'
+
+import { RESOURCES_MENU, RESOURCES_MENU_SIDEBAR } from '../util'
 
 export default function Resources() {
   const { t } = useTranslation()
 
   return (
-    <MenuItemContent
-      sidebar={{
-        description: t(
-          'Learn to build high-converting marketing campaigns with our resource library.'
-        ),
-        title: t('Marketing resources'),
-        imageUrl: marketingImg,
-        link: {
-          text: t('Visit our marketing'),
-          to: '/resources'
-        }
-      }}
-    >
+    <MenuItemContent secondary={RESOURCES_MENU_SIDEBAR}>
       <Flex width="100%" gap="3rem">
         <Flex flex={1} flexDirection="column">
           <Typography fontWeight={800} fontSize="20px" mb="1rem">
@@ -48,7 +34,7 @@ export default function Resources() {
             {t('Learn with me')}
           </Typography>
           <Flex flexDirection="column" gap="1rem">
-            {CARDS.map((card, i) => (
+            {RESOURCES_MENU.map((card, i) => (
               <Card key={i} card={card} />
             ))}
           </Flex>
@@ -57,21 +43,3 @@ export default function Resources() {
     </MenuItemContent>
   )
 }
-
-const CARDS: CardType[] = [
-  {
-    title: i18n.t('Help centre'),
-    link: '/hc',
-    icon: <CiCircleQuestion />
-  },
-  {
-    title: i18n.t('Podcast'),
-    link: '/podcast',
-    icon: <CiMicrophoneOn />
-  },
-  {
-    title: i18n.t('Video library'),
-    link: '/video-library',
-    icon: <MdOutlineOndemandVideo />
-  }
-]

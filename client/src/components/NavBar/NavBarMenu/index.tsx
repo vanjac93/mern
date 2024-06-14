@@ -6,7 +6,7 @@ import NavItem from './components/NavItem'
 
 export default function NavBarMenu() {
   return (
-    <Container>
+    <Container className="navbar-desktop-menu">
       <StyledNavRoot>
         <StyledNavList>
           {NAV_ITEMS.map((item) => (

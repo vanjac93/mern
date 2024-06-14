@@ -14,7 +14,7 @@ body {
   font-family:   ${({ theme }) => (theme.isRtl ? theme.font.rtl : theme.font.ltr)};
   background: ${(props) => props.theme.colors.bg};
   color: ${(props) => props.theme.colors.text};
-  height: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
   min-width: 320px;
   line-height: 1.4;

@@ -6,7 +6,7 @@ import { RiLoginBoxLine } from 'react-icons/ri'
 export default function NavBarUser() {
   const { t } = useTranslation()
   return (
-    <Flex gap="1rem">
+    <Flex className="navbar-desktop-user" gap="1rem">
       <Button icon={<RiLoginBoxLine />} outlined>
         {t('Login')}
       </Button>

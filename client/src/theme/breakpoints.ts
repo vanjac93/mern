@@ -1,8 +1,11 @@
-const MobileScreenBreakpoint = 600
+export type BreakpointType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
 
-export const breakpointsAliases = {
+type BreakpointAliasesType = {
+  [Breakpoint in BreakpointType]: number
+}
+
+export const breakpointsAliases: BreakpointAliasesType = {
   xs: 576,
-  mobileScreen: MobileScreenBreakpoint, // this one is defined in mediainfo
   sm: 768,
   md: 992,
   lg: 1200,
@@ -12,7 +15,6 @@ export const breakpointsAliases = {
 
 export const mediaQueries = {
   xs: `@media screen and (max-width: ${breakpointsAliases.xs - 1}px)`,
-  mobile: `@media screen and (max-width: ${breakpointsAliases.mobileScreen}px)`,
   sm: `@media screen and (max-width: ${breakpointsAliases.sm - 1}px)`,
   md: `@media screen and (max-width: ${breakpointsAliases.md - 1}px)`,
   lg: `@media screen and (max-width: ${breakpointsAliases.lg - 1}px)`,
@@ -23,7 +25,6 @@ export const mediaQueries = {
 type BreakpointsType = Array<string> & {
   xs?: string
   sm?: string
-  mobile?: string
   md?: string
   lg?: string
   xl?: string
@@ -36,7 +37,6 @@ export const breakpoints: BreakpointsType = Object.keys(breakpointsAliases).map(
 )
 
 breakpoints.xs = breakpoints[0]
-breakpoints.mobile = breakpoints[1]
 breakpoints.sm = breakpoints[2]
 breakpoints.md = breakpoints[3]
 breakpoints.lg = breakpoints[4]

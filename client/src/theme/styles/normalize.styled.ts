@@ -197,9 +197,6 @@ export const NormalizeStyle = createGlobalStyle`
   }
 
   body ::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 10px;
-    height: 10px;
   }
 
 `
