@@ -3,7 +3,21 @@ import { ButtonProps } from './types'
 import tinycolor from 'tinycolor2'
 import { space } from 'styled-system'
 
-export const StyledButton = styled.button<ButtonProps & { hasChildren: boolean }>`
+const buttonProps = [
+  'positive',
+  'negative',
+  'loading',
+  'size',
+  'icon',
+  'outlined',
+  'outlinedBold',
+  'hasChildren',
+  'active'
+]
+
+export const StyledButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => !buttonProps.includes(prop)
+})<ButtonProps & { hasChildren: boolean }>`
   all: unset;
 
   border-radius: 3px;

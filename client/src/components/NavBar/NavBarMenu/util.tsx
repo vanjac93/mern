@@ -1,9 +1,5 @@
 import i18n from '@client/services/i18n/i18n'
 import { NavItem } from './types'
-import Product from './ui/Product'
-import Solutions from './ui/Solutions'
-import Resources from './ui/Resources'
-import { CardType } from './components/Card'
 import { RiComputerLine } from 'react-icons/ri'
 import { RiPencilLine, RiLayout2Line, RiTestTubeLine, RiPuzzle2Line } from 'react-icons/ri'
 import { GrOptimize, GrTemplate } from 'react-icons/gr'
@@ -17,6 +13,10 @@ import { GrCart } from 'react-icons/gr'
 import { RiBuilding4Line, RiBriefcase2Line } from 'react-icons/ri'
 import { TbCloudCog } from 'react-icons/tb'
 import { LuMousePointer } from 'react-icons/lu'
+import Product from './Desktop/ui/Product'
+import Solutions from './Desktop/ui/Solutions'
+import Resources from './Desktop/ui/Resources'
+import { MenuCardType } from './components/Card'
 
 export const NAV_ITEMS: NavItem[] = [
   {
@@ -41,7 +41,7 @@ export const NAV_ITEMS: NavItem[] = [
   }
 ]
 
-export const PRODUCT_MENU: CardType[] = [
+export const PRODUCT_MENU: MenuCardType[] = [
   {
     title: i18n.t('Landing pages'),
     icon: <RiComputerLine />,
@@ -105,7 +105,7 @@ export const PRODUCT_MENU_SIDEBAR = {
   imageUrl: employeeImg
 }
 
-export const RESOURCES_MENU: CardType[] = [
+export const RESOURCES_MENU: MenuCardType[] = [
   {
     title: i18n.t('Help centre'),
     link: '/hc',
@@ -137,7 +137,7 @@ export const RESOURCES_MENU_SIDEBAR = {
 
 interface SolutionType {
   title: string
-  cards: CardType[]
+  cards: MenuCardType[]
 }
 
 export const SOLUTIONS_MENU: SolutionType[] = [

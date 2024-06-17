@@ -5,19 +5,19 @@ import {
   PRODUCT_MENU_SIDEBAR,
   SOLUTIONS_MENU,
   SOLUTIONS_MENU_SIDEBAR
-} from '../../NavBarMenu/util'
-import MenuItemContent from '../../NavBarMenu/components/MenuContent'
+} from '../../../NavBarMenu/util'
 import { Link } from 'react-router-dom'
 import { Flex } from '@client/components/layout/Box'
 import { Typography } from '@client/components/layout/Typography'
-import { CardType } from '../../NavBarMenu/components/Card'
 import { Divider } from '@client/components/layout/Divider'
+import MenuItemContent from '../../components/MenuItemContent'
+import { MenuCardType } from '../../components/Card'
 
 interface SidebarProps {
   open: boolean
 }
 
-function MobileLinks({ cards, title }: { cards: CardType[]; title?: string }) {
+function MobileLinks({ cards, title }: { cards: MenuCardType[]; title?: string }) {
   return (
     <Flex ml="4rem" flexDirection="column" gap="1rem">
       {title && (

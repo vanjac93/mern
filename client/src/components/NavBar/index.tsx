@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import Logo from './Logo'
-import NavBarMenu from './NavBarMenu'
 import NavBarUser from './NavBarUser'
 import { Flex } from '../layout/Box'
-import NavBarMenuMobile from './NavBarMenuMobile'
+import NavBarMenu from './NavBarMenu/Desktop'
+import NavBarMenuMobile from './NavBarMenu/Mobile'
 
 export default function NavBar() {
   return (
@@ -11,8 +11,8 @@ export default function NavBar() {
       <Logo />
       <Flex flex={1} alignItems="center" justifyContent={['end', 'end', 'end', 'space-between']}>
         <NavBarMenu />
-        <NavBarUser />
         <NavBarMenuMobile />
+        <NavBarUser />
       </Flex>
     </StyledNav>
   )

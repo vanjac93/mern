@@ -1,13 +1,13 @@
 import { ThemeType } from './types'
 
 const colors: ThemeType['colors'] = {
-  bg: '#f2f2f2',
-  bgAlt: '#fafa',
+  bg: '#fafafa',
+  bgAlt: 'white',
   text: 'black',
-  primary: '#0033ff',
-  secondary: 'orange',
+  primary: '#0054e9',
+  secondary: '#0163aa',
   borderSecondary: 'yellow',
-  uiBackground: 'green',
+  uiBackground: '#B8D5B8',
   error: 'red'
 }
 

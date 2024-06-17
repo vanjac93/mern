@@ -1,7 +1,7 @@
-import MenuItemContent from '../components/MenuContent'
-import MenuCard from '../components/Card'
 import styled from 'styled-components'
-import { PRODUCT_MENU, PRODUCT_MENU_SIDEBAR } from '../util'
+import MenuItemContent from '../../components/MenuItemContent'
+import { PRODUCT_MENU, PRODUCT_MENU_SIDEBAR } from '../../util'
+import MenuCard from '../../components/Card'
 
 export default function Product() {
   return (

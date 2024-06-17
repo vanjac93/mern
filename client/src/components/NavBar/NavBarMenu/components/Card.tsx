@@ -4,14 +4,14 @@ import { ReactNode } from 'react'
 import { IconContext } from 'react-icons'
 import { Link } from 'react-router-dom'
 
-export interface CardType {
+export interface MenuCardType {
   title: string
   description?: string
   icon: ReactNode
   link: string
 }
 
-export default function Card({ card }: { card: CardType }) {
+export default function MenuCard({ card }: { card: MenuCardType }) {
   const { title, description, icon, link } = card
 
   return (

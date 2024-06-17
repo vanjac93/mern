@@ -4,7 +4,8 @@ import {
   BackgroundProps,
   ColorProps,
   TypographyProps as TypoProps,
-  SpaceProps
+  SpaceProps,
+  TextStyleProps
 } from 'styled-system'
 
 export interface TypographyProps

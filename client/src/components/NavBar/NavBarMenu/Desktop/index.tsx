@@ -1,8 +1,8 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import styled from 'styled-components'
-import { Box } from '../../layout/Box'
-import { NAV_ITEMS } from './util'
-import NavItem from './components/NavItem'
+import { NAV_ITEMS } from '../util'
+import NavItem from '../components/NavItem'
+import { Box } from '@client/components/layout/Box'
 
 export default function NavBarMenu() {
   return (
@@ -30,6 +30,7 @@ const StyledNavViewportContainer = styled(Box)`
   margin: 0 auto;
   perspective: 2000px;
   transform: translateX(-50%);
+  width: 75vw;
 
   ${({ theme }) => theme.mq.xl} {
     width: 75vw;

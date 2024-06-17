@@ -9,7 +9,9 @@ export const NormalizeStyle = createGlobalStyle`
 
   *, :after, :before {
     box-sizing: inherit;
+    box-sizing: border-box;
   }
+
   body {
     margin: 0;
   }

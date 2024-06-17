@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next'
-import MenuItemContent from '../components/MenuContent'
 import { Flex } from '@client/components/layout/Box'
 import { Typography } from '@client/components/layout/Typography'
-import Card from '../components/Card'
-
-import { RESOURCES_MENU, RESOURCES_MENU_SIDEBAR } from '../util'
+import MenuItemContent from '../../components/MenuItemContent'
+import { RESOURCES_MENU, RESOURCES_MENU_SIDEBAR } from '../../util'
+import MenuCard from '../../components/Card'
 
 export default function Resources() {
   const { t } = useTranslation()
@@ -35,7 +34,7 @@ export default function Resources() {
           </Typography>
           <Flex flexDirection="column" gap="1rem">
             {RESOURCES_MENU.map((card, i) => (
-              <Card key={i} card={card} />
+              <MenuCard key={i} card={card} />
             ))}
           </Flex>
         </Flex>

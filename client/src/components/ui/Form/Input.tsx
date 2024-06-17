@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 const StyledInput = styled.input<{ error?: boolean }>`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.uiBackground};
+  color: ${({ theme }) => theme.colors.text};
   border: 1px solid
     ${({ theme, error }) => (error ? theme.colors.error : theme.colors.uiBackground)};
   width: 100%;

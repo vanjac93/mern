@@ -1,8 +1,8 @@
-import MenuCard from '../components/Card'
-import MenuItemContent from '../components/MenuContent'
 import { Flex } from '@client/components/layout/Box'
 import { Typography } from '@client/components/layout/Typography'
-import { SOLUTIONS_MENU, SOLUTIONS_MENU_SIDEBAR } from '../util'
+import MenuItemContent from '../../components/MenuItemContent'
+import { SOLUTIONS_MENU, SOLUTIONS_MENU_SIDEBAR } from '../../util'
+import MenuCard from '../../components/Card'
 
 export default function Solutions() {
   return (
