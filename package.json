@@ -5,6 +5,7 @@
   "scripts": {
     "client:dev": "nx start client",
     "server:dev": "nodemon server/src/main.ts",
+    "client:test": "vitest",
     "watch-tsc": "tsc --noEmit -w -p ./client/tsconfig.json",
     "lint": "eslint client",
     "format": "prettier --write 'client/src/**/*.{js,jsx,ts,tsx,json}' --config ./.prettierrc.json"
@@ -68,11 +69,14 @@
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/user-event": "^14.5.2",
     "@types/tinycolor2": "^1.4.6",
     "axios": "^1.6.0",
     "express": "~4.18.1",
     "framer-motion": "^11.2.10",
     "i18next": "^23.11.5",
+    "msw": "^2.3.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.51.5",

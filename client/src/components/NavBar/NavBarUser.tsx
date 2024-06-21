@@ -11,7 +11,7 @@ export default function NavBarUser() {
       <Button as={Link} to="/login" icon={<RiLoginBoxLine />} outlined>
         {t('Login')}
       </Button>
-      <Button positive icon={<RiLoginBoxLine />}>
+      <Button outlined icon={<RiLoginBoxLine />}>
         {t('Sign up')}
       </Button>
     </Flex>

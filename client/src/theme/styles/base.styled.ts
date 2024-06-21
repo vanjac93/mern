@@ -1,11 +1,11 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 import { hexToRGB } from '@client/utils/style'
 
 export const GlobalBaseStyle = createGlobalStyle`
 
 html, body{
-  font-size: 14px;
+  font-size: 16px;
 }
 
 body {

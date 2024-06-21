@@ -1,7 +1,7 @@
 import { ThemeType } from './types'
 
 const colors: ThemeType['colors'] = {
-  bg: '#fafafa',
+  bg: '#yellow',
   bgAlt: 'white',
   text: 'black',
   primary: '#0054e9',
