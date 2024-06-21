@@ -51,6 +51,12 @@
           "buildTarget": "server:build:production"
         }
       }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nodemon server/src/main.ts"]
+      }
     }
   }
 }

@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "client:start": "nx start client",
-    "server:start": "nodemon server/src/main.ts",
+    "server:start": "nx serve server",
     "client:test": "vitest --config client/vite.config.ts",
     "watch-tsc": "tsc --noEmit -w -p ./client/tsconfig.json",
     "lint": "eslint client",
