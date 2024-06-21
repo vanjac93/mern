@@ -1,5 +1,11 @@
-import { describe, expect } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import Home from './pages/Home'
+import TestWrapper from './tests/testUtil'
 
 describe('<App />', () => {
-  expect(true).toBeTruthy()
+  it('App renders', () => {
+    render(<Home />, { wrapper: TestWrapper })
+
+    expect(screen.getByText('Turn Emails intos Revenue')).toBeInTheDocument()
+  })
 })

@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "client:dev": "nx start client",
-    "server:dev": "nodemon server/src/main.ts",
-    "client:test": "vitest",
+    "client:start": "nx start client",
+    "server:start": "nodemon server/src/main.ts",
+    "client:test": "vitest --config client/vite.config.ts",
     "watch-tsc": "tsc --noEmit -w -p ./client/tsconfig.json",
     "lint": "eslint client",
     "format": "prettier --write 'client/src/**/*.{js,jsx,ts,tsx,json}' --config ./.prettierrc.json"
@@ -27,6 +27,7 @@
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
     "@testing-library/react": "15.0.6",
+    "@types/cors": "^2.8.17",
     "@types/express": "~4.17.13",
     "@types/jest": "^29.4.0",
     "@types/node": "18.16.9",
@@ -73,6 +74,7 @@
     "@testing-library/user-event": "^14.5.2",
     "@types/tinycolor2": "^1.4.6",
     "axios": "^1.6.0",
+    "cors": "^2.8.5",
     "express": "~4.18.1",
     "framer-motion": "^11.2.10",
     "i18next": "^23.11.5",

@@ -3,13 +3,8 @@
   "compilerOptions": {
     "outDir": "../dist/out-tsc",
     "noEmit": true,
-    "module": "commonjs",
-    "types": [
-      "jest",
-      "node",
-      "@nx/react/typings/cssmodule.d.ts",
-      "@nx/react/typings/image.d.ts"
-    ]
+    "module": "ESNext",
+    "types": ["jest", "node", "@nx/react/typings/cssmodule.d.ts", "@nx/react/typings/image.d.ts"]
   },
   "include": [
     "jest.config.ts",

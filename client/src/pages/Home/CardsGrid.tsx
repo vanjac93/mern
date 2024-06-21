@@ -2,12 +2,19 @@ import i18n from '@client/services/i18n/i18n'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+interface CardType {
+  link: string
+  title: string
+  mobileSrc: string
+  img: { src: string; media: string }[]
+}
+
 const MEDIA = {
   DESKTOP: '(min-width: 990px)',
   TABLET: '(min-width: 750px)'
 }
 
-const CARDS = [
+const CARDS: CardType[] = [
   {
     link: '/shop',
     title: i18n.t('Shop'),
@@ -57,7 +64,7 @@ const CARDS = [
     link: '/desc',
     title: i18n.t('Option'),
     mobileSrc: 'https://dummyimage.com/200x400/#dd25a6/#c11e1e',
-    images: [
+    img: [
       {
         src: 'https://dummyimage.com/600x800/#dd25a6/#c11e1e',
         media: MEDIA.DESKTOP
@@ -70,15 +77,15 @@ const CARDS = [
   }
 ]
 
-function Card(card) {
+function Card({ card }: { card: CardType }) {
   return (
     <div>
       <Link to={card.link}>
         <picture>
-          {card.images.map((img) => (
+          {card.img.map((img) => (
             <>
               <source srcSet={img.src} media={img.media} />
-              <img srcSet={img.mobileSrc} alt="test" />
+              <img srcSet={card.mobileSrc} alt="test" />
             </>
           ))}
 
