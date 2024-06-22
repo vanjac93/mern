@@ -55,7 +55,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["nodemon server/src/main.ts"]
+        "commands": ["nodemon -r dotenv/config server/src/main.ts"]
       }
     }
   }
