@@ -5,9 +5,9 @@ import { hexToRGB } from '@client/utils/style'
 const Loading = styled.div<{ large?: true; small?: boolean }>`
   display: inline-block;
   flex: none;
-  border: 2px solid ${({ theme }) => hexToRGB(theme.colors.text, 0.5)};
+  border: 2px solid ${({ theme }) => hexToRGB(theme.colors.bgAlt, 0.5)};
   border-radius: 50%;
-  border-top-color: ${({ theme }) => theme.colors.text}; // make global variable
+  border-top-color: ${({ theme }) => theme.colors.textUi}; // make global variable
   animation: spin;
   animation-duration: 1s;
   animation-iteration-count: infinite;

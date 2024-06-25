@@ -17,7 +17,7 @@ export default function Home() {
             'Win new customers with the #1 email marketing and automations platform* that recommends ways to get more opens, clicks, and sales.'
           )}
           action={
-            <Button as={Link} to="/shop" positive>
+            <Button as={Link} to="/shop">
               Visit shop
             </Button>
           }

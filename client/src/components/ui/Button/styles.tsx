@@ -1,126 +1,123 @@
 import styled, { css } from 'styled-components'
 import { ButtonProps } from './types'
-import tinycolor from 'tinycolor2'
-import { space } from 'styled-system'
+import { getActiveColor, getHoverColor, hexToRGB } from '@client/utils/style'
 
-const buttonProps = [
-  'positive',
-  'negative',
-  'loading',
-  'size',
-  'icon',
-  'outlined',
-  'outlinedBold',
-  'hasChildren',
-  'active'
-]
+const buttonProps = ['loading', 'diabled']
 
 export const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !buttonProps.includes(prop)
-})<ButtonProps & { hasChildren: boolean }>`
+})<ButtonProps>`
   all: unset;
-
-  border-radius: 3px;
-  border: 1px solid;
-
-  height: ${({ size }) => (size === 'large' ? '43px' : size === 'small' ? '20px' : '33px')};
-  padding: ${({ size }) => (size === 'large' ? '0 35px' : size === 'small' ? '0 15px' : '0 25px')};
-  min-width: 30px;
-  transition: color 200ms, background-color 200ms, border-color 200ms;
-
-  display: inline-flex;
+  font-family: inherit;
+  font-size: ${({ size }) => (size === 'small' ? '12px' : '14px')};
+  font-weight: ${({ size }) => (size === 'small' ? 500 : 400)};
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  border-radius: ${({ rounded }) => (rounded ? '50%' : '8px')};
+  line-height: 1;
+  box-shadow: none;
+  border: 1px solid;
   flex: none;
+  position: relative;
+  transition: 300ms;
+  pointer-events: ${({ disabled, loading }) => {
+    console.log('test', disabled, loading)
+    return disabled || loading ? 'none' : 'initial'
+  }};
 
   cursor: pointer;
+  opacity: ${({ disabled, loading }) => (disabled || loading ? 0.5 : 1)};
 
-  position: relative;
-
-  text-transform: uppercase;
-  line-height: 1;
-
-  font-size: ${({ size }) => (size === 'small' ? '10px' : '13px')};
-  font-weight: bold;
-  text-align: center;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  color: ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => theme.colors.bgAlt};
-  border-color: ${({ theme }) => theme.colors.bgAlt};
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary};
-    background-color: ${({ theme }) => theme.colors.bg};
-    border-color: ${({ theme }) => theme.colors.bg};
-  }
-
-  i {
-    font-size: ${({ size }) => (size === 'large' ? '17px' : '13px')};
-    vertical-align: middle;
-  }
-
-  ${({ positive }) =>
-    positive &&
-    css`
-      color: ${({ theme }) => theme.colors.bgAlt};
-      background-color: ${({ theme }) => theme.colors.primary};
-      border-color: ${({ theme }) => theme.colors.primary};
-
-      &:hover {
-        color: ${({ theme }) => theme.colors.bgAlt};
-        background-color: ${({ theme }) => tinycolor(theme.colors.primary).lighten(3).toString()};
-        border-color: ${({ theme }) => tinycolor(theme.colors.primary).lighten(3).toString()};
-      }
-    `};
-  ${({ negative }) =>
-    negative &&
-    css`
-      color: ${({ theme }) => theme.colors.secondary};
-      background-color: ${({ theme }) => theme.colors.bgAlt};
-      border-color: ${({ theme }) => theme.colors.bgAlt};
-      &:hover {
-        color: ${({ theme }) => theme.colors.secondary};
-        background-color: ${({ theme }) => theme.colors.bgAlt};
-        border-color: ${({ theme }) => theme.colors.bgAlt};
-      }
-    `};
-
-  ${({ icon, hasChildren, size }) =>
-    icon &&
-    !hasChildren &&
-    css`
-      min-width: 10px;
-      padding: 0;
-      width: ${size === 'large' ? '43px' : '33px'};
-      text-align: center;
-    `};
-  ${({ outlined, icon, hasChildren, size }) =>
-    outlined &&
-    css`
-      border: 1px solid;
-      background-color: transparent;
-      width: ${icon && !hasChildren ? 33 + 'px' : 'auto'};
-      height: 33px;
-      color: ${({ theme }) => theme.colors.primary};
-      border-color: ${({ theme }) => theme.colors.bgAlt};
-      &:hover {
-        color: ${({ theme }) => theme.colors.secondary};
+  ${({ theme, variant }) => {
+    if (variant === 'outlined') {
+      return css`
         background-color: transparent;
-        border-color: ${({ theme }) => theme.colors.bgAlt};
+        color: ${theme.colors.primary};
+        border-color: ${hexToRGB(theme.colors.primary, 0.5)};
+        &:hover {
+          border-color: ${theme.colors.primary};
+        }
+      `
+    }
+
+    if (variant === 'alert') {
+      return css`
+        background-color: ${theme.colors.errorSecondary};
+        color: ${theme.colors.textUi};
+        border-color: ${theme.colors.errorSecondary};
+
+        &:hover {
+          background-color: ${getHoverColor(theme.colors.errorSecondary)};
+        }
+      `
+    }
+
+    if (variant === 'text') {
+      return css`
+        background-color: transparent;
+        color: ${theme.colors.primary};
+        border-color: transparent;
+
+        &:hover {
+          background-color: ${hexToRGB(theme.colors.primary, 0.04)};
+        }
+      `
+    }
+
+    return css`
+      background-color: ${theme.colors.primary};
+      border-color: transparent;
+      color: ${theme.colors.textUi};
+      box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background-color: ${getHoverColor(theme.colors.primary)};
       }
-    `};
 
-  ${({ loading }) =>
-    loading &&
-    css`
-      color: transparent !important;
-      transition: none;
-    `};
+      &:active {
+        background-color: ${getActiveColor(theme.colors.primary)};
+      }
+    `
+  }}
 
-  ${space}
-
-  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  ${({ icon, text, size }) => {
+    if (icon && !text) {
+      if (size === 'large') {
+        return css`
+          padding: 0;
+          width: 38px;
+          height: 38px;
+        `
+      }
+      if (size === 'small') {
+        return css`
+          padding: 0;
+          border-radius: 5px;
+          width: 26px;
+          height: 26px;
+        `
+      }
+      return css`
+        padding: 0;
+        width: 30px;
+        height: 30px;
+      `
+    } else if (size === 'large') {
+      return css`
+        padding: 15px 20px;
+        min-width: 90px;
+      `
+    } else if (size === 'small') {
+      return css`
+        border-radius: 5px;
+        padding: 4px 8px;
+      `
+    }
+    return css`
+      padding: 10px 12px;
+      min-width: 90px;
+    `
+  }}
 `

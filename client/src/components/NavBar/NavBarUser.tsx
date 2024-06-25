@@ -8,10 +8,10 @@ export default function NavBarUser() {
   const { t } = useTranslation()
   return (
     <Flex className="navbar-desktop-user" gap="1rem">
-      <Button as={Link} to="/login" icon={<RiLoginBoxLine />} outlined>
+      <Button as={Link} to="/login" icon={<RiLoginBoxLine />} variant="outlined">
         {t('Login')}
       </Button>
-      <Button outlined icon={<RiLoginBoxLine />}>
+      <Button variant="outlined" icon={<RiLoginBoxLine />}>
         {t('Sign up')}
       </Button>
     </Flex>

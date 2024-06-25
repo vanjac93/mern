@@ -2,12 +2,12 @@ import { AnchorHTMLAttributes, HTMLAttributes, ReactNode } from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 
 type BaseButtonProps = {
-  outlined?: boolean
-  positive?: boolean
-  negative?: boolean
+  variant?: 'default' | 'outlined' | 'text' | 'alert'
+  text?: ReactNode
   type?: 'submit' | 'reset' | 'button'
   disabled?: boolean
   loading?: boolean
+  rounded?: boolean
   icon?: ReactNode
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   size?: 'small' | 'default' | 'large'

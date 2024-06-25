@@ -20,11 +20,15 @@ interface ThemeColorsType {
   bg: string
   bgAlt: string
   text: string
+  textSecondary: string
+  textUi: string
   primary: string
   secondary: string
   borderSecondary: string
   uiBackground: string
   error: string
+  errorSecondary: string
+  secondaryAlt: string
 }
 
 export type MediaQueries = {

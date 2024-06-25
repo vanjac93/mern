@@ -1,12 +1,11 @@
 import { FieldValues, useController } from 'react-hook-form'
-import { useTranslation } from 'react-i18next'
 
 import Field from '@client/components/ui/Form/Field'
 import Input from '@client/components/ui/Form/Input'
 import { Box } from '@client/components/layout/Box'
-import { Typography } from '@client/components/layout/Typography'
 import Label from '../Label'
 import { FormControllerProps } from './types'
+import ControllerHelpText from './ControllerHelpText'
 
 const InputController = <T extends FieldValues>({
   control,
@@ -16,6 +15,7 @@ const InputController = <T extends FieldValues>({
   disabled,
   type = 'text',
   placeholder,
+  helpText,
   icon
 }: FormControllerProps<T, HTMLInputElement>) => {
   const {
@@ -26,7 +26,7 @@ const InputController = <T extends FieldValues>({
     control,
     rules: rules
   })
-  const { t } = useTranslation()
+
   return (
     <Field aria-disabled={disabled}>
       {label && <Label>{label}</Label>}
@@ -43,11 +43,7 @@ const InputController = <T extends FieldValues>({
         />
         {icon && icon}
       </Box>
-      {error && (
-        <Typography color="admin.secondaryAlt" fontSize="12px" mt="4px" pl="4px">
-          {error.message || t('Please fill out this field.')}
-        </Typography>
-      )}
+      <ControllerHelpText helpText={helpText} error={error} />
     </Field>
   )
 }

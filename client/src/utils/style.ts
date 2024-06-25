@@ -1,4 +1,5 @@
 import { ExecutionContext } from 'styled-components'
+import tinycolor from 'tinycolor2'
 
 /**
  * camelCaseToDash('userId') => "user-id"
@@ -46,3 +47,11 @@ export function hexToRGB(hex: string, alpha?: number) {
 //rtl
 export const rtl = (left: string, right: string) => (props: ExecutionContext) =>
   props.theme.isRtl ? right : left
+
+export function getHoverColor(color: string) {
+  return tinycolor(color).darken().toHexString()
+}
+
+export function getActiveColor(color: string) {
+  return tinycolor(color).lighten().toHexString()
+}

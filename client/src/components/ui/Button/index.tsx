@@ -1,32 +1,38 @@
-import { Flex } from '@client/components/layout/Box'
+import { HTMLAttributes, forwardRef } from 'react'
+
 import { StyledButton } from './styles'
 import { ButtonProps } from './types'
+import { Typography } from '@client/components/layout/Typography'
+import { Box, Flex } from '@client/components/layout/Box'
 import { Loading } from '../Loading'
 
-export default function Button(props: ButtonProps) {
-  const isChildNull = Boolean(
-    typeof props.children === 'undefined' || props.children === undefined || props.children === ''
-  )
+const Button = forwardRef<HTMLButtonElement, ButtonProps & HTMLAttributes<HTMLButtonElement>>(
+  (props, ref) => {
+    const { icon, variant = 'default', text, size = 'default', loading, disabled, ...other } = props
 
-  const Icon = props.icon
-  return (
-    <StyledButton {...props} hasChildren={!isChildNull}>
-      {props.icon && Icon}
-      {!isChildNull && props.children}
-      {props.loading && (
-        <Flex
-          position="absolute"
-          m={'auto'}
-          left={0}
-          top={0}
-          bottom={0}
-          right={0}
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Loading small />
+    return (
+      <StyledButton
+        ref={ref}
+        type="button"
+        variant={variant}
+        {...other}
+        loading={loading}
+        icon={icon}
+        text={text}
+        disabled={disabled}
+      >
+        {icon}
+        <Flex gap={8} alignItems="center">
+          {loading && <Loading small={size === 'small'} />}
+          {text && (
+            <Typography as={'span'} lineHeight="1" fontSize={'inherit'}>
+              {text}
+            </Typography>
+          )}
         </Flex>
-      )}
-    </StyledButton>
-  )
-}
+      </StyledButton>
+    )
+  }
+)
+
+export default Button
