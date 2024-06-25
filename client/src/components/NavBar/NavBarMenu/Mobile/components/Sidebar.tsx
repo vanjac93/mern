@@ -12,6 +12,9 @@ import { Typography } from '@client/components/layout/Typography'
 import { Divider } from '@client/components/layout/Divider'
 import MenuItemContent from '../../components/MenuItemContent'
 import { MenuCardType } from '../../components/Card'
+import Button from '@client/components/ui/Button'
+import { RiLoginBoxLine } from 'react-icons/ri'
+import { useTranslation } from 'react-i18next'
 
 interface SidebarProps {
   open: boolean
@@ -35,6 +38,8 @@ function MobileLinks({ cards, title }: { cards: MenuCardType[]; title?: string }
 }
 
 export default function MobileSidebar({ open }: SidebarProps) {
+  const { t } = useTranslation()
+
   function renderProductSubmenu() {
     return (
       <MenuItemContent secondary={PRODUCT_MENU_SIDEBAR} isMobile>
@@ -74,6 +79,16 @@ export default function MobileSidebar({ open }: SidebarProps) {
           }
         ]}
       />
+      <Flex flexDirection="column" gap={8} p={2}>
+        <Button
+          text={t('Login')}
+          as={Link}
+          to="/login"
+          icon={<RiLoginBoxLine />}
+          variant="outlined"
+        />
+        <Button text={t('Sign up')} icon={<RiLoginBoxLine />} />
+      </Flex>
     </StyledSidebar>
   )
 }

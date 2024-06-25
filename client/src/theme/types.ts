@@ -21,6 +21,7 @@ interface ThemeColorsType {
   bgAlt: string
   text: string
   textSecondary: string
+  success: string
   textUi: string
   primary: string
   secondary: string

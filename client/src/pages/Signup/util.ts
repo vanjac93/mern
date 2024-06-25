@@ -16,5 +16,5 @@ export const UserSchema: ZodType<SignupFormType> = z.object({
   username: z
     .string()
     .trim()
-    .min(8, { message: i18n.t('Username must be at least 8 characters long.') })
+    .min(5, { message: i18n.t('Username must be at least 8 characters long.') })
 })

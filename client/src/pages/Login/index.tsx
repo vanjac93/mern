@@ -11,6 +11,9 @@ import loginImg from '@client/assets/login2.jpg'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Divider } from '@client/components/layout/Divider'
+import { AccountAPI } from '@client/services/api'
+import Field from '@client/components/ui/Form/Field'
+import { Message } from '@client/components/ui/Message'
 
 interface LoginFormType {
   username: string
@@ -25,16 +28,24 @@ const defaultValues: LoginFormType = {
 export default function Login() {
   const { control, handleSubmit } = useForm<LoginFormType>({ mode: 'onChange', defaultValues })
   const { t } = useTranslation()
+  const [errors, setErrors] = useState<string[]>([])
   const [submitting, setSubmitting] = useState(false)
   const navigate = useNavigate()
 
   async function onSubmit(data: LoginFormType) {
-    console.log('data', data)
     setSubmitting(true)
-    setTimeout(() => {
+    if (errors.length) {
+      setErrors([])
+    }
+
+    const [_, apiErrors] = await AccountAPI.login(data)
+    setSubmitting(false)
+    if (apiErrors.length) {
+      setErrors(apiErrors)
       setSubmitting(false)
+    } else {
       navigate('/')
-    }, 2000)
+    }
   }
 
   return (
@@ -43,6 +54,11 @@ export default function Login() {
       <StyledFormContainer>
         <Logo />
         <Form onSubmit={handleSubmit(onSubmit)}>
+          {errors.length > 0 && (
+            <Field>
+              <Message title={t('Error')} type="error" message={errors} />
+            </Field>
+          )}
           <InputController
             control={control}
             placeholder={t('Enter username')}
@@ -52,6 +68,7 @@ export default function Login() {
           <InputController
             style={{ marginBottom: '0 !important' }}
             control={control}
+            type="password"
             placeholder={t('Enter password')}
             name="password"
             label={t('Password')}

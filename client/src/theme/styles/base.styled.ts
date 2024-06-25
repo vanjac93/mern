@@ -55,11 +55,10 @@ body {
 }
 
 a {
-  text-decoration: none;
-  color:${(props) => props.theme.colors.text}; ;
-  &:hover{
-    color:${(props) => props.theme.colors.primary}; ;
-
+  text-decoration: underline;
+  color: ${(props) => props.theme.colors.primary}; ;
+  &:hover {
+    color:${(props) => props.theme.colors.secondary}; ;
   }
 }
 
