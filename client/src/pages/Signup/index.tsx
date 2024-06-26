@@ -13,7 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { PASS_HELP_TEXT, UserSchema, signupDefaultValues } from './util'
 import { SignupFormType } from './types'
 import { Message } from '@client/components/ui/Message'
-import { AccountAPI } from '@client/services/api'
+import { AuthAPI } from '@client/services/api'
 import Field from '@client/components/ui/Form/Field'
 
 export default function Signup() {
@@ -32,7 +32,7 @@ export default function Signup() {
     if (errors.length) {
       setErrors([])
     }
-    const [_, apiErrors] = await AccountAPI.signup(data)
+    const [_, apiErrors] = await AuthAPI.signup(data)
     if (apiErrors.length) {
       setErrors(apiErrors)
     } else {

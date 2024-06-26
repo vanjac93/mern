@@ -1,16 +1,17 @@
 import { t } from 'i18next'
+import { getAccessToken } from './util'
 
 export async function request<T>(
   url: string,
   options: RequestInit = {}
 ): Promise<[T | null, string[], Response]> {
   const errors = []
-  const session = undefined
+  const accessToken = getAccessToken()
 
   const response = await fetch(import.meta.env.VITE_API_URL + url, {
     headers: new Headers({
       'content-type': 'application/json',
-      Authorization: `Bearer ${session}`
+      Authorization: `Bearer ${accessToken}`
     }),
     credentials: 'include',
     ...options

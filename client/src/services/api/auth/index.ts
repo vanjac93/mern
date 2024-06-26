@@ -1,4 +1,4 @@
-import { post } from '../api'
+import { get, post } from '../api'
 import { setAccessToken } from '../util'
 
 interface UserType {
@@ -7,15 +7,17 @@ interface UserType {
   username: string
 }
 
-const AccountAPI = {
+const AuthAPI = {
   login: async (user: Omit<UserType, 'email'>) => {
-    const response = await post('/account/login', user)
+    const response = await post('/auth/login', user)
     const [data] = response
     // @ts-ignore
     setAccessToken(data.accessToken as string)
     return response
   },
-  signup: async (user: UserType) => post<UserType>('/account/signup', user)
+  getUser: () => get('/auth'),
+  signup: async (user: UserType) => post<UserType>('/auth/signup', user),
+  refreshToken: () => post('/auth/refresh', {})
 }
 
-export default AccountAPI
+export default AuthAPI

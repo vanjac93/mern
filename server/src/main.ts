@@ -1,14 +1,26 @@
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
-import accountRoutes from './routes/accountRoutes'
 import helmet from 'helmet'
 import bodyParser from 'body-parser'
 import errorHandler from './util/errorHandler'
+import postsRouter from './routes/postsRoutes'
+import authRouter from './routes/authRoutes'
 
 const host = process.env.HOST ?? 'localhost'
 const port = process.env.PORT ? Number(process.env.PORT) : 8080
 const MONGO_URL = process.env.MONGO_URL
+
+process.on('uncaughtException', (error: Error) => {
+  errorHandler.handleError(error)
+  if (!errorHandler.isTrustedError(error)) {
+    process.exit(1)
+  }
+})
+
+process.on('unhandledRejection', (reason: Error, promise: Promise<any>) => {
+  throw reason
+})
 
 const app = express()
 app.use(
@@ -26,7 +38,9 @@ app.get('/', (req, res) => {
   res.send({ message: 'Testing is the best' })
 })
 
-app.use('/account', accountRoutes)
+app.use('/auth', authRouter)
+
+app.use('/posts', postsRouter)
 
 // Error handler
 app.use(async (err, req, res, next) => {

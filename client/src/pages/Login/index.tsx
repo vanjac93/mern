@@ -11,7 +11,7 @@ import loginImg from '@client/assets/login2.jpg'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Divider } from '@client/components/layout/Divider'
-import { AccountAPI } from '@client/services/api'
+import { AuthAPI } from '@client/services/api'
 import Field from '@client/components/ui/Form/Field'
 import { Message } from '@client/components/ui/Message'
 
@@ -38,7 +38,7 @@ export default function Login() {
       setErrors([])
     }
 
-    const [_, apiErrors] = await AccountAPI.login(data)
+    const [_, apiErrors] = await AuthAPI.login(data)
     setSubmitting(false)
     if (apiErrors.length) {
       setErrors(apiErrors)

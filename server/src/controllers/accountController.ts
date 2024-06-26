@@ -122,8 +122,6 @@ export const loginHandler: RequestHandler = async (
     httpOnly: true
   })
 
-  res.cookie('accessToken', accessToken)
-
   return res.json({
     accessToken
   })

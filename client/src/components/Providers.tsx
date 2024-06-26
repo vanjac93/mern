@@ -1,12 +1,22 @@
+import { AuthAPI } from '@client/services/api'
 import { GlobalBaseStyle } from '@client/theme/styles/base.styled'
 import { NormalizeStyle } from '@client/theme/styles/normalize.styled'
 import theme from '@client/theme/theme'
 import isPropValid from '@emotion/is-prop-valid'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useEffect } from 'react'
 import { WebTarget } from 'styled-components'
 import { StyleSheetManager, ThemeProvider } from 'styled-components'
 
 export default function Providers({ children }: PropsWithChildren) {
+  useEffect(() => {
+    async function fetchUser() {
+      const [user, errors] = await AuthAPI.getUser()
+      console.log('got user', user)
+    }
+
+    fetchUser()
+  }, [])
+
   return (
     <StyleSheetManager>
       <StyleSheetManager shouldForwardProp={shouldForwardProp}>
