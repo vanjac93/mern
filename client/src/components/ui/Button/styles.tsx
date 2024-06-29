@@ -22,10 +22,7 @@ export const StyledButton = styled.button.withConfig({
   flex: none;
   position: relative;
   transition: 300ms;
-  pointer-events: ${({ disabled, loading }) => {
-    console.log('test', disabled, loading)
-    return disabled || loading ? 'none' : 'initial'
-  }};
+  pointer-events: ${({ disabled, loading }) => (disabled || loading ? 'none' : 'initial')};
 
   cursor: pointer;
   opacity: ${({ disabled, loading }) => (disabled || loading ? 0.5 : 1)};

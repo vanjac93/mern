@@ -13,8 +13,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { PASS_HELP_TEXT, UserSchema, signupDefaultValues } from './util'
 import { SignupFormType } from './types'
 import { Message } from '@client/components/ui/Message'
-import { AuthAPI } from '@client/services/api'
+// import { AuthAPI } from '@client/services/api'
 import Field from '@client/components/ui/Form/Field'
+import { AuthAPI2 } from '@client/services/apiV2'
 
 export default function Signup() {
   const { control, handleSubmit } = useForm<SignupFormType>({
@@ -32,13 +33,15 @@ export default function Signup() {
     if (errors.length) {
       setErrors([])
     }
-    const [_, apiErrors] = await AuthAPI.signup(data)
-    if (apiErrors.length) {
-      setErrors(apiErrors)
-    } else {
-      setDone(true)
-    }
-    setSubmitting(false)
+
+    const apiData = await AuthAPI2.signup(data)
+    console.log('signup data', apiData)
+    // if (apiErrors.length) {
+    //   setErrors(apiErrors)
+    // } else {
+    //   setDone(true)
+    // }
+    // setSubmitting(false)
   }
 
   function renderDone() {

@@ -26,11 +26,11 @@ export default function MobileNavigation(props: Props) {
           const { id, text } = item
           return (
             <Flex
-              as={Link}
               p="1rem"
               onClick={() => setActiveItem(item)}
               key={id}
-              justifyContent="space-between"
+              alignItems="center"
+              gap="8px"
             >
               <Typography fontSize={24}>{text}</Typography>
               <IoIosArrowForward className="arrow" size={24} />
@@ -39,7 +39,7 @@ export default function MobileNavigation(props: Props) {
         })}
       </Flex>
       <Flex flexDirection="column" className="active-menu">
-        <Flex as={Link} p="1rem" onClick={() => setActiveItem(null)} alignItems="center" gap="1rem">
+        <Flex p="1rem" onClick={() => setActiveItem(null)} alignItems="center" gap="1rem">
           <IoIosArrowBack size={24} />
           <Typography fontSize={24}>{activeItem?.text}</Typography>
         </Flex>

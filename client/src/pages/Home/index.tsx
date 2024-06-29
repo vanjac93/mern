@@ -2,7 +2,8 @@ import Page from '@client/components/Page'
 import { Flex } from '@client/components/layout/Box'
 import Hero from '@client/components/layout/Hero'
 import Button from '@client/components/ui/Button'
-import { get } from '@client/services/api/api'
+import API from '@client/services/apiV2/api'
+// import { get } from '@client/services/api/api'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
@@ -12,8 +13,8 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchPosts() {
-      const [data, errors] = await get('/posts')
-      console.log('posts', data, errors)
+      const data = await API.get('/posts')
+      console.log('posts', data)
     }
 
     fetchPosts()

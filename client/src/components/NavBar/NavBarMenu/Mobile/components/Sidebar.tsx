@@ -15,6 +15,9 @@ import { MenuCardType } from '../../components/Card'
 import Button from '@client/components/ui/Button'
 import { RiLoginBoxLine } from 'react-icons/ri'
 import { useTranslation } from 'react-i18next'
+import { LuLogOut } from 'react-icons/lu'
+import { clearAccessToken } from '@client/services/apiV2/util'
+import { AuthAPI2 } from '@client/services/apiV2'
 
 interface SidebarProps {
   open: boolean
@@ -37,8 +40,13 @@ function MobileLinks({ cards, title }: { cards: MenuCardType[]; title?: string }
   )
 }
 
-export default function MobileSidebar({ open }: SidebarProps) {
+export default function Sidebar({ open }: SidebarProps) {
   const { t } = useTranslation()
+
+  async function onLogout() {
+    await AuthAPI2.logout()
+    clearAccessToken()
+  }
 
   function renderProductSubmenu() {
     return (
@@ -51,9 +59,9 @@ export default function MobileSidebar({ open }: SidebarProps) {
   function renderSolutionsSubmenu() {
     return (
       <MenuItemContent secondary={SOLUTIONS_MENU_SIDEBAR} isMobile>
-        {SOLUTIONS_MENU.map((item) => {
+        {SOLUTIONS_MENU.map((item, i) => {
           return (
-            <Flex flexDirection="column" gap="1rem">
+            <Flex key={i} flexDirection="column" gap="1rem">
               <MobileLinks title={item.title} cards={item.cards} />
               <Divider />
             </Flex>
@@ -88,6 +96,7 @@ export default function MobileSidebar({ open }: SidebarProps) {
           variant="outlined"
         />
         <Button text={t('Sign up')} icon={<RiLoginBoxLine />} />
+        <Button onClick={onLogout} text={t('Logout')} icon={<LuLogOut />} />
       </Flex>
     </StyledSidebar>
   )

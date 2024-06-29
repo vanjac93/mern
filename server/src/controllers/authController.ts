@@ -15,7 +15,7 @@ export interface TypedRequestBody<T> extends Express.Request {
   body: T
 }
 
-export const registerHandler: RequestHandler<RegisterType> = async (
+export const postSignup: RequestHandler<RegisterType> = async (
   req: TypedRequestBody<RegisterType>,
   res,
   next
@@ -69,7 +69,7 @@ interface LoginBodyType {
   password: string
 }
 
-export const loginHandler: RequestHandler = async (
+export const postLogin: RequestHandler = async (
   req: TypedRequestBody<LoginBodyType>,
   res,
   next
@@ -105,7 +105,7 @@ export const loginHandler: RequestHandler = async (
         expiresIn: '1min'
       }
     )
-    accessToken = jwt.sign(
+    refreshToken = jwt.sign(
       {
         username: existingUser.username
       },
@@ -125,4 +125,61 @@ export const loginHandler: RequestHandler = async (
   return res.json({
     accessToken
   })
+}
+
+export const getRefresh: RequestHandler = (req, res, next) => {
+  const existingRefreshToken = req.cookies.refreshToken
+  if (!existingRefreshToken) {
+    throw new AppError('No refresh token provided.', 401, 'Missing refresh, should login.', true)
+  }
+
+  let decodedToken
+  try {
+    decodedToken = jwt.decode(existingRefreshToken)
+  } catch (error) {
+    next(new AppError('Decoding failed.', 404, 'Refresh token decode failed.', true))
+  }
+
+  const { username } = decodedToken
+
+  if (!username) {
+    throw new AppError('Missing username from refresh token.', 401, 'No username provided.', true)
+  }
+
+  const user = User.findOne({ username })
+
+  if (!user) {
+    throw new AppError('No user found.', 404, 'Missing user from decoded token', true)
+  }
+
+  let accessToken, refreshToken
+  const payload = { username }
+  try {
+    accessToken = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
+      expiresIn: '1min'
+    })
+
+    refreshToken = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
+      expiresIn: '3min'
+    })
+  } catch (error) {
+    return next(new AppError('JWT Generation failed', 400, 'Something went wrong', true))
+  }
+
+  res.cookie('refreshToken', refreshToken, {
+    httpOnly: true
+  })
+
+  return res.json({
+    accessToken
+  })
+}
+
+export const getUser: RequestHandler = (req, res, next) => {
+  return res.json({ id: 1, name: 'vanja' })
+}
+
+export const postLogout: RequestHandler = (req, res, next) => {
+  res.setHeader('Clear-Site-Data', 'cookies')
+  res.status(200).json({ message: 'Logged out.' })
 }

@@ -6,6 +6,7 @@ import bodyParser from 'body-parser'
 import errorHandler from './util/errorHandler'
 import postsRouter from './routes/postsRoutes'
 import authRouter from './routes/authRoutes'
+import cookieParser from 'cookie-parser'
 
 const host = process.env.HOST ?? 'localhost'
 const port = process.env.PORT ? Number(process.env.PORT) : 8080
@@ -30,6 +31,8 @@ app.use(
   })
 )
 app.use(helmet())
+
+app.use(cookieParser())
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

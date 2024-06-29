@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { RiMenuLine } from 'react-icons/ri'
 import { useState } from 'react'
 import { RiCloseLargeLine } from 'react-icons/ri'
-import MobileSidebar from './components/Sidebar'
+import Sidebar from './components/Sidebar'
 
 export default function NavBarMenuMobile() {
   const [open, setOpen] = useState(false)
@@ -18,7 +18,7 @@ export default function NavBarMenuMobile() {
       ) : (
         <RiMenuLine onClick={toggleOpen} cursor="pointer" size="2rem" />
       )}
-      <MobileSidebar open={open} />
+      <Sidebar open={open} />
     </Container>
   )
 }
