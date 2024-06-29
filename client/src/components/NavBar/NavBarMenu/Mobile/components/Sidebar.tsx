@@ -16,8 +16,8 @@ import Button from '@client/components/ui/Button'
 import { RiLoginBoxLine } from 'react-icons/ri'
 import { useTranslation } from 'react-i18next'
 import { LuLogOut } from 'react-icons/lu'
-import { clearAccessToken } from '@client/services/apiV2/util'
-import { AuthAPI2 } from '@client/services/apiV2'
+import { clearAccessToken } from '@client/services/api/util'
+import { AuthAPI } from '@client/services/api'
 
 interface SidebarProps {
   open: boolean
@@ -44,7 +44,7 @@ export default function Sidebar({ open }: SidebarProps) {
   const { t } = useTranslation()
 
   async function onLogout() {
-    await AuthAPI2.logout()
+    await AuthAPI.logout()
     clearAccessToken()
   }
 

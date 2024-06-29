@@ -9,12 +9,13 @@ import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import loginImg from '@client/assets/login2.jpg'
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Divider } from '@client/components/layout/Divider'
 import Field from '@client/components/ui/Form/Field'
 import { Message } from '@client/components/ui/Message'
-import { AuthAPI2 } from '@client/services/apiV2'
 import { useAppStore } from '@client/store'
+import { AuthAPI } from '@client/services/api'
+import { UserType } from '@client/services/api/auth/types'
 
 interface LoginFormType {
   username: string
@@ -27,9 +28,10 @@ const defaultValues: LoginFormType = {
 }
 
 export default function Login() {
+  const store = useAppStore()
+
   const { control, handleSubmit } = useForm<LoginFormType>({ mode: 'onChange', defaultValues })
   const { t } = useTranslation()
-  const store = useAppStore()
   const [errors, setErrors] = useState<string[]>([])
   const [submitting, setSubmitting] = useState(false)
   const navigate = useNavigate()
@@ -40,17 +42,21 @@ export default function Login() {
       setErrors([])
     }
 
-    const [tokens, apiError] = await AuthAPI2.login(data)
+    const [_, apiErrors] = await AuthAPI.login(data)
     setSubmitting(false)
-    if (apiError) {
-      setErrors(apiError)
+    if (apiErrors.length) {
+      setErrors(apiErrors)
       return
     }
 
-    const [user, userErrors] = await AuthAPI2.getUser()
-    if (!userErrors) {
-      store.setUser(user)
+    const [user, userErrors] = await AuthAPI.getUser()
+    if (!userErrors.length) {
+      store.setUser(user as UserType)
     }
+  }
+
+  if (store.user) {
+    return <Navigate to="/" />
   }
 
   return (

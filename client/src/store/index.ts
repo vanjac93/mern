@@ -1,4 +1,4 @@
-import { UserType } from '@client/services/apiV2/auth/types'
+import { UserType } from '@client/services/api/auth/types'
 import { createWithEqualityFn } from 'zustand/traditional'
 
 interface AppStoreType {
