@@ -1,6 +1,6 @@
 import { ZodType, z } from 'zod'
 import { SignupFormType } from './types'
-import i18n from '@client/services/i18n/i18n'
+import i18n from '~/services/i18n/i18n'
 
 export const signupDefaultValues: SignupFormType = {
   username: '',

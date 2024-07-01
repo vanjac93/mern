@@ -2,8 +2,8 @@ import { HTMLAttributes, forwardRef } from 'react'
 
 import { StyledButton } from './styles'
 import { ButtonProps } from './types'
-import { Typography } from '@client/components/layout/Typography'
-import { Box, Flex } from '@client/components/layout/Box'
+import { Typography } from '~/components/layout/Typography'
+import { Box, Flex } from '~/components/layout/Box'
 import { Loading } from '../Loading'
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps & HTMLAttributes<HTMLButtonElement>>(

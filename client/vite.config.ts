@@ -9,7 +9,7 @@ export default defineConfig({
   cacheDir: '../node_modules/.vite/client',
   resolve: {
     alias: {
-      '@client': path.resolve('client', 'src')
+      '~': path.resolve('client', 'src')
     }
   },
   server: {
@@ -45,7 +45,7 @@ export default defineConfig({
     setupFiles: './src/tests/setup.ts',
     reporters: ['default'],
     alias: {
-      '@client': path.resolve('client', 'src')
+      '~': path.resolve('client', 'src')
     }
   }
 })

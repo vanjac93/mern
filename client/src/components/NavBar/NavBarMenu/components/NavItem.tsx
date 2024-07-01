@@ -3,7 +3,7 @@ import { NavItem as NavItemType } from '../types'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import styled, { css } from 'styled-components'
 import { FaArrowDown } from 'react-icons/fa'
-import { Flex } from '@client/components/layout/Box'
+import { Flex } from '~/components/layout/Box'
 
 export default function NavItem({ item }: { item: NavItemType }) {
   function renderItem() {

@@ -2,8 +2,10 @@ import { RequestHandler } from 'express'
 import User from '../models/user'
 import bcrypt from 'bcryptjs'
 import { validationResult } from 'express-validator'
-import jwt from 'jsonwebtoken'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 import { AppError } from '../util/appError'
+
+const REFRESH_TOKEN_KEY = 'refreshToken'
 
 interface RegisterType {
   username: string
@@ -40,19 +42,11 @@ export const postSignup: RequestHandler<RegisterType> = async (
 
   const validation = validationResult(req)
   if (!validation.isEmpty()) {
-    const err = new Error('User validation failed.')
-    return next(err)
+    return next(new AppError('User validation failed.', 422, 'Invalid credentials.', true))
   }
 
-  let encPassword: string
-  let salt: string
-  try {
-    salt = await bcrypt.genSalt()
-    encPassword = await bcrypt.hash(password, salt)
-  } catch (err) {
-    const error = new Error()
-    return next(error)
-  }
+  const salt = await bcrypt.genSalt()
+  const encPassword = await bcrypt.hash(password, salt)
 
   const user = new User({ email, username, password: encPassword })
 
@@ -76,8 +70,7 @@ export const postLogin: RequestHandler = async (
 ) => {
   const validation = validationResult(req)
   if (!validation.isEmpty()) {
-    const error = new Error('Invalid login input')
-    return next(error)
+    return next(new AppError('User not found.', 401, 'Invalid credentials.', true))
   }
 
   const { username, password } = req.body
@@ -90,8 +83,7 @@ export const postLogin: RequestHandler = async (
 
   const isValidPassword = await bcrypt.compare(password, existingUser.password)
   if (!isValidPassword) {
-    const error = new Error('Invalid credentials.')
-    return next(error)
+    return next(new AppError('User not found.', 401, 'Invalid credentials.', true))
   }
 
   let accessToken, refreshToken
@@ -118,7 +110,7 @@ export const postLogin: RequestHandler = async (
     return next(new AppError('JWT Generation failed', 400, 'Something went wrong', true))
   }
 
-  res.cookie('refreshToken', refreshToken, {
+  res.cookie(REFRESH_TOKEN_KEY, refreshToken, {
     httpOnly: true
   })
 
@@ -166,7 +158,7 @@ export const getRefresh: RequestHandler = (req, res, next) => {
     return next(new AppError('JWT Generation failed', 400, 'Something went wrong', true))
   }
 
-  res.cookie('refreshToken', refreshToken, {
+  res.cookie(REFRESH_TOKEN_KEY, refreshToken, {
     httpOnly: true
   })
 
@@ -175,11 +167,28 @@ export const getRefresh: RequestHandler = (req, res, next) => {
   })
 }
 
-export const getUser: RequestHandler = (req, res, next) => {
-  return res.json({ id: 1, name: 'vanja' })
+function getUsername(token: string): string {
+  try {
+    // @ts-ignore
+    const payload = jwt.decode(token)
+    // @ts-ignore
+    return payload.username
+  } catch (error) {
+    throw new AppError('Cannot get username', 404, 'Cannot get username from token', true)
+  }
+}
+
+export const getUser: RequestHandler = async (req, res, next) => {
+  const username = getUsername(req.cookies.refreshToken)
+  const user = await User.findOne({ username })
+  if (!user) {
+    return next(new AppError('User not found', 404, 'User account not found.', true))
+  }
+
+  return res.json(user)
 }
 
 export const postLogout: RequestHandler = (req, res, next) => {
-  res.setHeader('Clear-Site-Data', 'cookies')
+  res.clearCookie(REFRESH_TOKEN_KEY)
   res.status(200).json({ message: 'Logged out.' })
 }

@@ -1,21 +1,20 @@
-import Logo from '@client/components/NavBar/Logo'
-import { Flex } from '@client/components/layout/Box'
-import { Typography } from '@client/components/layout/Typography'
-import Button from '@client/components/ui/Button'
-import Form from '@client/components/ui/Form/Form'
-import InputController from '@client/components/ui/Form/controllers/InputController'
+import Logo from '~/components/NavBar/Logo'
+import { Flex } from '~/components/layout/Box'
+import { Typography } from '~/components/layout/Typography'
+import Button from '~/components/ui/Button'
+import Form from '~/components/ui/Form/Form'
+import InputController from '~/components/ui/Form/controllers/InputController'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import loginImg from '@client/assets/login2.jpg'
+import loginImg from '~/assets/login2.jpg'
 import { useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-import { Divider } from '@client/components/layout/Divider'
-import Field from '@client/components/ui/Form/Field'
-import { Message } from '@client/components/ui/Message'
-import { useAppStore } from '@client/store'
-import { AuthAPI } from '@client/services/api'
-import { UserType } from '@client/services/api/auth/types'
+import { Link, Navigate } from 'react-router-dom'
+import { Divider } from '~/components/layout/Divider'
+import Field from '~/components/ui/Form/Field'
+import { Message } from '~/components/ui/Message'
+import { useAppStore } from '~/store'
+import { AuthAPI } from '~/services/api'
 
 interface LoginFormType {
   username: string
@@ -28,13 +27,11 @@ const defaultValues: LoginFormType = {
 }
 
 export default function Login() {
-  const store = useAppStore()
-
+  const { user, login } = useAppStore()
   const { control, handleSubmit } = useForm<LoginFormType>({ mode: 'onChange', defaultValues })
   const { t } = useTranslation()
   const [errors, setErrors] = useState<string[]>([])
   const [submitting, setSubmitting] = useState(false)
-  const navigate = useNavigate()
 
   async function onSubmit(data: LoginFormType) {
     setSubmitting(true)
@@ -49,13 +46,10 @@ export default function Login() {
       return
     }
 
-    const [user, userErrors] = await AuthAPI.getUser()
-    if (!userErrors.length) {
-      store.setUser(user as UserType)
-    }
+    await login()
   }
 
-  if (store.user) {
+  if (user) {
     return <Navigate to="/" />
   }
 

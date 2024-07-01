@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { color, ColorProps } from 'styled-system'
 
 import { DropdownMenuItemProps } from './types'
-import { hexToRGB } from '@client/utils/style'
+import { hexToRGB } from '~/utils/style'
 
 export const StyledDropdownMenuContent = styled(DropdownMenuPrimitive.Content)<
   ColorProps & { $rounded?: boolean }

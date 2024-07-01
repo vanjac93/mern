@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-import { hexToRGB } from '@client/utils/style'
+import { hexToRGB } from '~/utils/style'
 
 export const GlobalBaseStyle = createGlobalStyle`
 

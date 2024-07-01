@@ -7,6 +7,8 @@ import errorHandler from './util/errorHandler'
 import postsRouter from './routes/postsRoutes'
 import authRouter from './routes/authRoutes'
 import cookieParser from 'cookie-parser'
+import jwt from 'jsonwebtoken'
+import { AppError } from './util/appError'
 
 const host = process.env.HOST ?? 'localhost'
 const port = process.env.PORT ? Number(process.env.PORT) : 8080
@@ -37,10 +39,6 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-// app.use((req, res, next) => {
-
-// })
-
 app.use('/auth', authRouter)
 
 app.use('/posts', postsRouter)
@@ -65,5 +63,5 @@ mongoose
     })
   })
   .catch((err) => {
-    console.log('cant ocnnect', err)
+    console.log('cannot connect to db', err)
   })

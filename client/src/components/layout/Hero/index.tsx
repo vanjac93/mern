@@ -1,4 +1,4 @@
-import { Heading } from '@client/components/ui/Heading'
+import { Heading } from '~/components/ui/Heading'
 import { ReactNode } from 'react'
 import { Typography } from '../Typography'
 import styled from 'styled-components'

@@ -1,11 +1,11 @@
-import { Box, Flex } from '@client/components/layout/Box'
+import { Box, Flex } from '~/components/layout/Box'
 import { MultistepFormProps, StepType } from './types'
 import { useState } from 'react'
 import Button from '../../Button'
 import styled, { css } from 'styled-components'
 import { FaLock } from 'react-icons/fa'
 import { useTranslation } from 'react-i18next'
-import { hexToRGB } from '@client/utils/style'
+import { hexToRGB } from '~/utils/style'
 import Form from '../Form'
 
 export default function MultistepForm(props: MultistepFormProps) {

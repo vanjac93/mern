@@ -1,4 +1,4 @@
-import logo from '@client/assets/logoipsum-330.svg'
+import logo from '~/assets/logoipsum-330.svg'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 

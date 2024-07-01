@@ -1,5 +1,5 @@
-import Providers from '@client/components/Providers'
-import i18n from '@client/services/i18n/i18n'
+import Providers from '~/components/Providers'
+import i18n from '~/services/i18n/i18n'
 import { PropsWithChildren } from 'react'
 import { I18nextProvider } from 'react-i18next'
 import { MemoryRouter } from 'react-router-dom'

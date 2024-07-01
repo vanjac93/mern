@@ -1,4 +1,4 @@
-import Page from '@client/components/Page'
+import Page from '~/components/Page'
 import { useTranslation } from 'react-i18next'
 
 export default function Shop() {

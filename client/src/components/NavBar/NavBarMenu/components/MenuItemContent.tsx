@@ -1,5 +1,5 @@
-import { Box, Flex } from '@client/components/layout/Box'
-import { Typography } from '@client/components/layout/Typography'
+import { Box, Flex } from '~/components/layout/Box'
+import { Typography } from '~/components/layout/Typography'
 import { PropsWithChildren } from 'react'
 import { Link } from 'react-router-dom'
 

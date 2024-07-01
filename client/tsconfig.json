@@ -11,7 +11,7 @@
     "module": "ESNext",
     "rootDir": ".",
     "paths": {
-      "@client/*": ["client/src/*"]
+      "~/*": ["client/src/*"]
     }
   },
   "include": ["./**/*", "*.tsx"],

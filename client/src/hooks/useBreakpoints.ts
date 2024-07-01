@@ -1,4 +1,4 @@
-import { BreakpointType, breakpointsAliases } from '@client/theme/breakpoints'
+import { BreakpointType, breakpointsAliases } from '~/theme/breakpoints'
 import { useEffect, useRef, useState } from 'react'
 
 function getBreakpoint(currentBp?: BreakpointType): BreakpointType | undefined {

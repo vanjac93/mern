@@ -3,7 +3,7 @@ import { FC } from 'react'
 import * as PopoverPrimitive from '@radix-ui/react-popover'
 
 import { PopoverProps } from './types'
-import { StyledPopoverArrow, StyledPopoverContent } from '@client/components/ui/Popover/styles'
+import { StyledPopoverArrow, StyledPopoverContent } from '~/components/ui/Popover/styles'
 
 const Popover: FC<PopoverProps> = (props) => {
   const { children, content, contentProps, variant, container, ...other } = props

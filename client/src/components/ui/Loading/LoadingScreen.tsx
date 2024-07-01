@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
-import { Typography } from '@client/components/layout/Typography'
-import { Loading } from '@client/components/ui/Loading'
+import { Typography } from '~/components/layout/Typography'
+import { Loading } from '~/components/ui/Loading'
 
 const LoadingScreen = ({ zIndex, text }: { zIndex?: number; text?: string }) => {
   return (
@@ -21,7 +21,7 @@ export const LoadingScreenCSS = css`
   text-align: center;
   vertical-align: middle;
   padding: 16px;
-  background-color: ${({ theme }) => theme.colors.bg};
+  background-color: ${({ theme }) => theme.colors.primary};
   font-size: 16px;
   line-height: 1;
   animation-fill-mode: both;

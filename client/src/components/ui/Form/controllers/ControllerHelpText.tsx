@@ -1,6 +1,6 @@
 //ccomponent that renders  help text and error message
 
-import { Typography } from '@client/components/layout/Typography'
+import { Typography } from '~/components/layout/Typography'
 import { FieldError } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 

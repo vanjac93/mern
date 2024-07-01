@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import { postGetHandler } from '../controllers/postController'
 import { authMiddleware } from '../middleware/auth'
+import { getPosts } from '../controllers/postController'
 
 const postsRouter = Router()
 
-postsRouter.get('/', authMiddleware, postGetHandler)
+postsRouter.get('/', authMiddleware, getPosts)
 
 export default postsRouter

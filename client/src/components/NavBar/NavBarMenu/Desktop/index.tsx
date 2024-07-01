@@ -2,7 +2,7 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import styled from 'styled-components'
 import { NAV_ITEMS } from '../util'
 import NavItem from '../components/NavItem'
-import { Box } from '@client/components/layout/Box'
+import { Box } from '~/components/layout/Box'
 
 export default function NavBarMenu() {
   return (

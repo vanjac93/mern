@@ -1,8 +1,8 @@
 import { FieldValues, useController } from 'react-hook-form'
 
-import Field from '@client/components/ui/Form/Field'
-import Input from '@client/components/ui/Form/Input'
-import { Box } from '@client/components/layout/Box'
+import Field from '~/components/ui/Form/Field'
+import Input from '~/components/ui/Form/Input'
+import { Box } from '~/components/layout/Box'
 import Label from '../Label'
 import { FormControllerProps } from './types'
 import ControllerHelpText from './ControllerHelpText'

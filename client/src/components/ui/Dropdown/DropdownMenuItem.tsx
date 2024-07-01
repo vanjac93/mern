@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 
 import { StyledDropdownMenuItem } from './styles'
 import { DropdownMenuItemProps } from './types'
-import { Box } from '@client/components/layout/Box'
+import { Box } from '~/components/layout/Box'
 
 const DropdownMenuItem = forwardRef<HTMLDivElement, DropdownMenuItemProps>((props, ref) => {
   return (

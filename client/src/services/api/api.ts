@@ -1,22 +1,19 @@
-import Axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import Axios, { AxiosRequestConfig, AxiosResponse, CreateAxiosDefaults } from 'axios'
 import { getAccessToken, setAccessToken } from './util'
 import AuthAPI from './auth'
+import i18n from '../i18n/i18n'
 
-export const BASE_API = Axios.create({
+const API_CONFIG: CreateAxiosDefaults = {
   baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json'
   }
-})
+}
 
-const API = Axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-  withCredentials: true,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
+export const BASE_API = Axios.create(API_CONFIG)
+
+const API = Axios.create(API_CONFIG)
 
 API.interceptors.request.use(
   (req) => {
@@ -33,7 +30,7 @@ API.interceptors.response.use(
     const originalRequest = err.config
     if (err.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true
-      const [accessToken, error, response] = await AuthAPI.refreshToken()
+      const [accessToken] = await AuthAPI.refreshToken()
       setAccessToken(accessToken)
       API.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
       return API(originalRequest)
@@ -78,8 +75,33 @@ async function request<T>(url: string, options: AxiosRequestConfig = {}): Reques
     return [response.data, [], response]
   } catch (error: any) {
     const message = error?.response?.data?.error?.description as string
-    return [null, [message], response as AxiosResponse]
+    const messages = message ? [message] : []
+    const noMessage = messages.length
+    const status: HttpCode = error.request.status
+    switch (status) {
+      case 400:
+        noMessage && messages.push(i18n.t('Bad request!'))
+        break
+      case 401:
+        noMessage && messages.push(i18n.t('Unauthorized!'))
+        break
+      case 403:
+        noMessage && messages.push(i18n.t('Forbidden!'))
+        break
+      case 404:
+        noMessage && messages.push(i18n.t('Not found!'))
+        break
+      case 500:
+        noMessage && messages.push(i18n.t('Internal server error!'))
+        break
+      default:
+        noMessage && messages.push(i18n.t('Something went wrong!'))
+    }
+
+    return [null, messages, response as AxiosResponse]
   }
 }
+
+type HttpCode = 200 | 201 | 400 | 401 | 403 | 404 | 422 | 500
 
 export default API

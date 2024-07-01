@@ -1,4 +1,4 @@
-import i18n from '@client/services/i18n/i18n'
+import i18n from '~/services/i18n/i18n'
 import Providers from './components/Providers'
 import { I18nextProvider } from 'react-i18next'
 import AppRouter from './components/Router'

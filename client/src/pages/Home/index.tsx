@@ -1,7 +1,7 @@
-import Page from '@client/components/Page'
-import { Flex } from '@client/components/layout/Box'
-import Hero from '@client/components/layout/Hero'
-import Button from '@client/components/ui/Button'
+import Page from '~/components/Page'
+import { Flex } from '~/components/layout/Box'
+import Hero from '~/components/layout/Hero'
+import Button from '~/components/ui/Button'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 

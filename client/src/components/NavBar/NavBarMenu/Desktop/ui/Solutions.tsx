@@ -1,5 +1,5 @@
-import { Flex } from '@client/components/layout/Box'
-import { Typography } from '@client/components/layout/Typography'
+import { Flex } from '~/components/layout/Box'
+import { Typography } from '~/components/layout/Typography'
 import MenuItemContent from '../../components/MenuItemContent'
 import { SOLUTIONS_MENU, SOLUTIONS_MENU_SIDEBAR } from '../../util'
 import MenuCard from '../../components/Card'

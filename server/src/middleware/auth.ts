@@ -32,9 +32,7 @@ export const authMiddleware: RequestHandler = async (req, res, next) => {
       return next(new AppError('No user', 404, 'User not found.', false))
     }
 
-    // @ts-ignore
     if (!req.user) {
-      // @ts-ignore
       req.user = user
     }
 

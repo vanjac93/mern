@@ -7,17 +7,18 @@ import {
   SOLUTIONS_MENU_SIDEBAR
 } from '../../../NavBarMenu/util'
 import { Link } from 'react-router-dom'
-import { Flex } from '@client/components/layout/Box'
-import { Typography } from '@client/components/layout/Typography'
-import { Divider } from '@client/components/layout/Divider'
+import { Flex } from '~/components/layout/Box'
+import { Typography } from '~/components/layout/Typography'
+import { Divider } from '~/components/layout/Divider'
 import MenuItemContent from '../../components/MenuItemContent'
 import { MenuCardType } from '../../components/Card'
-import Button from '@client/components/ui/Button'
+import Button from '~/components/ui/Button'
 import { RiLoginBoxLine } from 'react-icons/ri'
 import { useTranslation } from 'react-i18next'
 import { LuLogOut } from 'react-icons/lu'
-import { clearAccessToken } from '@client/services/api/util'
-import { AuthAPI } from '@client/services/api'
+import { clearAccessToken } from '~/services/api/util'
+import { AuthAPI } from '~/services/api'
+import { useAppStore } from '~/store'
 
 interface SidebarProps {
   open: boolean
@@ -42,10 +43,10 @@ function MobileLinks({ cards, title }: { cards: MenuCardType[]; title?: string }
 
 export default function Sidebar({ open }: SidebarProps) {
   const { t } = useTranslation()
+  const { user, logout } = useAppStore()
 
   async function onLogout() {
-    await AuthAPI.logout()
-    clearAccessToken()
+    await logout()
   }
 
   function renderProductSubmenu() {
@@ -88,15 +89,24 @@ export default function Sidebar({ open }: SidebarProps) {
         ]}
       />
       <Flex flexDirection="column" gap={8} p={2}>
-        <Button
-          text={t('Login')}
-          as={Link}
-          to="/login"
-          icon={<RiLoginBoxLine />}
-          variant="outlined"
-        />
-        <Button text={t('Sign up')} icon={<RiLoginBoxLine />} />
-        <Button onClick={onLogout} text={t('Logout')} icon={<LuLogOut />} />
+        {user ? (
+          <>
+            <Button variant="outlined" text={t('See profile')} as={Link} to="/profile" />
+            <Button onClick={onLogout} text={t('Logout')} icon={<LuLogOut />} />
+          </>
+        ) : (
+          <>
+            {' '}
+            <Button
+              text={t('Login')}
+              as={Link}
+              to="/login"
+              icon={<RiLoginBoxLine />}
+              variant="outlined"
+            />
+            <Button text={t('Sign up')} icon={<RiLoginBoxLine />} />
+          </>
+        )}
       </Flex>
     </StyledSidebar>
   )

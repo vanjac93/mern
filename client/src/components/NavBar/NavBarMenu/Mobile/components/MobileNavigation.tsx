@@ -1,5 +1,5 @@
-import { Flex } from '@client/components/layout/Box'
-import { Typography } from '@client/components/layout/Typography'
+import { Flex } from '~/components/layout/Box'
+import { Typography } from '~/components/layout/Typography'
 import { ReactNode, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'

@@ -1,6 +1,6 @@
 {
   "extends": "../tsconfig.base.json",
-  "files": [],
+  "files": ["src/index.d.ts"],
   "include": [],
   "references": [
     {

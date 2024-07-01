@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { ButtonProps } from './types'
-import { getActiveColor, getHoverColor, hexToRGB } from '@client/utils/style'
+import { getActiveColor, getHoverColor, hexToRGB } from '~/utils/style'
 
 const buttonProps = ['loading', 'diabled']
 

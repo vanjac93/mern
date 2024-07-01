@@ -1,5 +1,5 @@
-import { Flex } from '@client/components/layout/Box'
-import { Typography } from '@client/components/layout/Typography'
+import { Flex } from '~/components/layout/Box'
+import { Typography } from '~/components/layout/Typography'
 import { ReactNode } from 'react'
 import { IconContext } from 'react-icons'
 import { Link } from 'react-router-dom'

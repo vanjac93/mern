@@ -1,4 +1,4 @@
-import i18n from '@client/services/i18n/i18n'
+import i18n from '~/services/i18n/i18n'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 

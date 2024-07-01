@@ -1,11 +1,8 @@
-import { UserType } from '@client/services/api/auth/types'
 import { createWithEqualityFn } from 'zustand/traditional'
+import { AuthSliceType, createAuthSlice } from './authSlice'
 
-interface AppStoreType {
-  user?: UserType
-  setUser: (user?: UserType) => void
-}
+type AppStoreType = AuthSliceType
 
-export const useAppStore = createWithEqualityFn<AppStoreType>((set, get) => ({
-  setUser: (user) => set({ user })
+export const useAppStore = createWithEqualityFn<AppStoreType>((...a) => ({
+  ...createAuthSlice(...a)
 }))

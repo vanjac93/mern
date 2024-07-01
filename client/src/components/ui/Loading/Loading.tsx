@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { hexToRGB } from '@client/utils/style'
+import { hexToRGB } from '~/utils/style'
 
 const Loading = styled.div<{ large?: true; small?: boolean }>`
   display: inline-block;

@@ -1,4 +1,4 @@
-type HttpCode = 200 | 400 | 404 | 401 | 403 | 500
+type HttpCode = 200 | 400 | 404 | 401 | 403 | 422 | 500
 
 export class AppError extends Error {
   public readonly name: string

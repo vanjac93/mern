@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { Flex } from '@client/components/layout/Box'
-import { Typography } from '@client/components/layout/Typography'
+import { Flex } from '~/components/layout/Box'
+import { Typography } from '~/components/layout/Typography'
 import MenuItemContent from '../../components/MenuItemContent'
 import { RESOURCES_MENU, RESOURCES_MENU_SIDEBAR } from '../../util'
 import MenuCard from '../../components/Card'

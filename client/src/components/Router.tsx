@@ -1,20 +1,19 @@
-import Home from '@client/pages/Home'
-import Login from '@client/pages/Login'
-import Shop from '@client/pages/Shop'
-import Signup from '@client/pages/Signup'
+import Home from '~/pages/Home'
+import Login from '~/pages/Login'
+import Shop from '~/pages/Shop'
+import Signup from '~/pages/Signup'
+import { ROUTES } from '~/utils/constants'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-
-const ROUTES = {
-  HOME: '/',
-  LOGIN: '/login',
-  SIGNUP: '/signup',
-  SHOP: '/shop'
-}
+import ProtectedRoute from './ProtectedRoute'
 
 const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
-    element: <Home />
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    )
   },
   {
     path: ROUTES.LOGIN,
@@ -26,7 +25,11 @@ const router = createBrowserRouter([
   },
   {
     path: ROUTES.SHOP,
-    element: <Shop />
+    element: (
+      <ProtectedRoute>
+        <Shop />
+      </ProtectedRoute>
+    )
   }
 ])
 

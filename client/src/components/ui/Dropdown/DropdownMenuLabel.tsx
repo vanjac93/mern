@@ -1,4 +1,4 @@
-import { Typography } from '@client/components/layout/Typography'
+import { Typography } from '~/components/layout/Typography'
 
 type Props = {
   text: string

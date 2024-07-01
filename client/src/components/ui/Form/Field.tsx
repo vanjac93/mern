@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react'
 
-import { Box, BoxProps } from '@client/components/layout/Box'
+import { Box, BoxProps } from '~/components/layout/Box'
 
 export default function Field(props: PropsWithChildren<BoxProps>) {
   return (

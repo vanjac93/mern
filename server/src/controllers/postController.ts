@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express'
 
-export const postGetHandler: RequestHandler = (req, res, next) => {
+export const getPosts: RequestHandler = (req, res, next) => {
   res.json([
     {
       id: 1,
