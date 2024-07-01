@@ -21,7 +21,7 @@ export const LoadingScreenCSS = css`
   text-align: center;
   vertical-align: middle;
   padding: 16px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.secondary};
   font-size: 16px;
   line-height: 1;
   animation-fill-mode: both;

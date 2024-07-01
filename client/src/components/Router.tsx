@@ -3,8 +3,9 @@ import Login from '~/pages/Login'
 import Shop from '~/pages/Shop'
 import Signup from '~/pages/Signup'
 import { ROUTES } from '~/utils/constants'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, Routes, createBrowserRouter } from 'react-router-dom'
 import ProtectedRoute from './ProtectedRoute'
+import Profile from '~/pages/Profile'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Shop />
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: ROUTES.PROFILE,
+    element: (
+      <ProtectedRoute>
+        <Profile />
       </ProtectedRoute>
     )
   }
