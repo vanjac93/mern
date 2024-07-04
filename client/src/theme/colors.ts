@@ -12,7 +12,7 @@ const colors: ThemeType['colors'] = {
   bg: 'white',
   bgAlt: '#f2f2f2',
   secondary: '#0163aa',
-  borderSecondary: 'yellow',
+  borderSecondary: tinycolor('#0054e9').lighten(40).toHexString(),
   uiBackground: '#B8D5B8',
   secondaryAlt: '#f2f2f2'
 }

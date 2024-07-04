@@ -16,8 +16,6 @@ import Button from '~/components/ui/Button'
 import { RiLoginBoxLine } from 'react-icons/ri'
 import { useTranslation } from 'react-i18next'
 import { LuLogOut } from 'react-icons/lu'
-import { clearAccessToken } from '~/services/api/util'
-import { AuthAPI } from '~/services/api'
 import { useAppStore } from '~/store'
 
 interface SidebarProps {

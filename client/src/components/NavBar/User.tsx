@@ -4,15 +4,14 @@ import Button from '../ui/Button'
 import { RiLoginBoxLine } from 'react-icons/ri'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAppStore } from '~/store'
-import Dropdown from '../ui/Dropdown/Dropdown'
 import profileImg from '~/assets/employee.jpeg'
 import styled from 'styled-components'
-import DropdownMenu from '../ui/Dropdown/DropdownMenu'
-import DropdownMenuItem from '../ui/Dropdown/DropdownMenuItem'
 import { ROUTES } from '~/utils/constants'
+import { NavigationItem, NavigationMenu, NavigationMenuLink } from '../ui/NavigationMenu'
 
 const StyledImg = styled.img`
   width: 60px;
+  cursor: pointer;
   height: 60px;
   border-radius: 50%;
 `
@@ -28,19 +27,29 @@ function UserDropdown() {
   }
 
   return (
-    <Dropdown trigger={<StyledImg alt="Profile image" src={profileImg} />}>
-      <DropdownMenu portalProps={{}} sideOffset={10}>
-        <DropdownMenuItem onClick={() => navigate(ROUTES.PROFILE)}>{t('Profile')}</DropdownMenuItem>
-        <DropdownMenuItem onClick={onLogout}>{t('Logout')}</DropdownMenuItem>
-      </DropdownMenu>
-    </Dropdown>
+    <NavigationMenu style={{ zIndex: 1000 }} aria-label="User Menu" minWidth="100px">
+      <NavigationItem
+        render={
+          <>
+            <NavigationMenuLink as={Link} to={ROUTES.PROFILE}>
+              {t('My account')}
+            </NavigationMenuLink>
+            <NavigationMenuLink as="div" onClick={onLogout}>
+              {t('Logout')}
+            </NavigationMenuLink>
+          </>
+        }
+      >
+        <StyledImg src={profileImg} />
+      </NavigationItem>
+    </NavigationMenu>
   )
 }
 
-export default function NavBarUser() {
+export default function User() {
   const { t } = useTranslation()
   const user = useAppStore((state) => state.user)
-
+  console.log('object')
   return (
     <Flex className="navbar-desktop-user" gap="1rem">
       {user ? (

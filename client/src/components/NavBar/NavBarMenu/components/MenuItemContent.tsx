@@ -24,7 +24,7 @@ export default function MenuItemContent(props: PropsWithChildren<MenuItemContent
       <Flex gap="1rem" flexDirection="column">
         <Box>{children}</Box>
         {secondary && (
-          <Flex flexDirection="column" backgroundColor={'bg'} gap="1rem" p="1rem">
+          <Flex flexDirection="column" backgroundColor="bgAlt" gap="1rem" p="1rem">
             <Typography fontSize={18}>{secondary.title}</Typography>
             <Box>
               <Typography>{secondary.description}</Typography>
@@ -47,7 +47,7 @@ export default function MenuItemContent(props: PropsWithChildren<MenuItemContent
         {children}
       </Flex>
       {secondary && (
-        <Flex backgroundColor="bg" flex={1} p="2rem">
+        <Flex backgroundColor="bgAlt" flex={1} p="2rem">
           <Flex flexDirection="column" gap="1rem">
             <Typography fontSize={20}>{secondary.title}</Typography>
             <Typography>{secondary.description}</Typography>

@@ -22,6 +22,7 @@ export default function Signup() {
     defaultValues: signupDefaultValues,
     resolver: zodResolver(UserSchema)
   })
+
   const { t } = useTranslation()
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
