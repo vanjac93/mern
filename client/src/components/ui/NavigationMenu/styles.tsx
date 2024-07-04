@@ -137,15 +137,14 @@ export const StyledNavMenuContent = styled(NavigationMenuPrimitive.Content)`
   }
 `
 
-export const StyledViewportPosition = styled.div<{ alignRight?: boolean; minWidth?: string }>`
+export const StyledViewportPosition = styled.div<{
+  alignRight?: boolean
+  minWidth?: string
+}>`
   position: absolute;
   display: flex;
   justify-content: center;
-  width: 100%;
-  min-width: ${({ minWidth }) => minWidth || '100%'};
   top: 100%;
-  left: ${({ alignRight, theme }) => (!alignRight || theme.isRtl ? '0' : 'auto')};
-  right: ${({ alignRight, theme }) => (alignRight && !theme.isRtl ? '0' : 'auto')};
   text-align: ${({ alignRight, theme }) =>
     alignRight ? (theme.isRtl ? 'left' : 'right') : 'inherit'};
   perspective: 2000px;
@@ -155,11 +154,11 @@ export const StyledNavMenuViewport = styled(NavigationMenuPrimitive.Viewport)`
   position: relative;
   transform-origin: top center;
   margin-top: 10px;
-  background-color: ${({ theme }) => theme.colors.bgAlt};
+  background-color: ${({ theme }) => theme.colors.bg};
   color: ${({ theme }) => theme.colors.text};
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 20px 40px 0px rgba(48, 48, 48, 0.25);
   transition: width, height, 300ms ease;
   height: var(--radix-navigation-menu-viewport-height);
   width: var(--radix-navigation-menu-viewport-width);
@@ -167,6 +166,7 @@ export const StyledNavMenuViewport = styled(NavigationMenuPrimitive.Viewport)`
   ${({ theme }) => theme.mq.sm} {
     width: 100%;
   }
+
   @media (prefers-reduced-motion: no-preference) {
     transition: 'width, height, 300ms ease';
     &[data-state='open'] {

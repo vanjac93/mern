@@ -9,11 +9,9 @@ export default function NavBar() {
   return (
     <StyledNav>
       <Logo />
-      <Flex flex={1} alignItems="center" justifyContent={['end', 'end', 'end', 'space-between']}>
-        <NavBarMenu />
-        <NavBarMenuMobile />
-        <User />
-      </Flex>
+      <NavBarMenu />
+      <NavBarMenuMobile />
+      <User />
     </StyledNav>
   )
 }
@@ -21,6 +19,7 @@ export default function NavBar() {
 const StyledNav = styled.nav`
   height: 80px;
   display: flex;
+  justify-content: space-between;
   background-color: #fff;
   align-items: center;
   padding: 1rem 2rem;

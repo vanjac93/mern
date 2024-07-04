@@ -42,12 +42,12 @@ export default function MenuItemContent(props: PropsWithChildren<MenuItemContent
   }
 
   return (
-    <Flex>
+    <Flex minWidth="75vw">
       <Flex flex={2} p="2rem">
         {children}
       </Flex>
       {secondary && (
-        <Flex backgroundColor="bgAlt" flex={1} p="2rem">
+        <Flex flex={1} p="2rem">
           <Flex flexDirection="column" gap="1rem">
             <Typography fontSize={20}>{secondary.title}</Typography>
             <Typography>{secondary.description}</Typography>
