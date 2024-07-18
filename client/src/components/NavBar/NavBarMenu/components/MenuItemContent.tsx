@@ -2,6 +2,7 @@ import { Box, Flex } from '~/components/layout/Box'
 import { Typography } from '~/components/layout/Typography'
 import { PropsWithChildren } from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 interface MenuItemContentProps {
   isMobile?: boolean
@@ -47,11 +48,11 @@ export default function MenuItemContent(props: PropsWithChildren<MenuItemContent
         {children}
       </Flex>
       {secondary && (
-        <Flex flex={1} p="2rem">
+        <Flex backgroundColor="bgAlt" flex={1} p="2rem">
           <Flex flexDirection="column" gap="1rem">
             <Typography fontSize={20}>{secondary.title}</Typography>
             <Typography>{secondary.description}</Typography>
-            <Link to={secondary.link?.to}>{secondary.link?.text || 'Learn more'}</Link>
+            <StyledLink to={secondary.link?.to}>{secondary.link?.text || 'Learn more'}</StyledLink>
             <img
               style={{ width: '100%', height: 'auto' }}
               src={secondary.imageUrl}
@@ -63,3 +64,7 @@ export default function MenuItemContent(props: PropsWithChildren<MenuItemContent
     </Flex>
   )
 }
+
+const StyledLink = styled(Link)`
+  text-decoration: underline;
+`

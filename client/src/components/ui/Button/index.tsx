@@ -3,7 +3,7 @@ import { HTMLAttributes, forwardRef } from 'react'
 import { StyledButton } from './styles'
 import { ButtonProps } from './types'
 import { Typography } from '~/components/layout/Typography'
-import { Box, Flex } from '~/components/layout/Box'
+import { Flex } from '~/components/layout/Box'
 import { Loading } from '../Loading'
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps & HTMLAttributes<HTMLButtonElement>>(
@@ -14,6 +14,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps & HTMLAttributes<HTMLBu
       <StyledButton
         ref={ref}
         type="button"
+        size={size}
         variant={variant}
         {...other}
         loading={loading}

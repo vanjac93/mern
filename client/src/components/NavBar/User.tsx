@@ -49,7 +49,6 @@ function UserDropdown() {
 export default function User() {
   const { t } = useTranslation()
   const user = useAppStore((state) => state.user)
-  console.log('object')
   return (
     <Flex className="navbar-desktop-user" gap="1rem">
       {user ? (

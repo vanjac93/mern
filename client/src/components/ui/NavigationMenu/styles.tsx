@@ -119,6 +119,7 @@ export const StyledNavMenuContent = styled(NavigationMenuPrimitive.Content)`
   padding: 3px 0;
 
   background-color: ${({ theme }) => theme.colors.uiBackground};
+
   &[data-motion='from-start'] {
     animation-name: enterFromLeft;
   }
@@ -190,7 +191,6 @@ export const StyledNavigationMenuList = styled(NavigationMenuPrimitive.List)`
   list-style: none;
   margin: 0;
   height: 100%;
-  font-size: 12px;
 `
 
 export const StyledArrow = styled.div`

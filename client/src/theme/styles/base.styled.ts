@@ -55,10 +55,11 @@ body {
 }
 
 a {
-  text-decoration: underline;
-  color: ${(props) => props.theme.colors.primary}; ;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  color: ${({ theme }) => theme.colors.text};
   &:hover {
-    color:${(props) => props.theme.colors.secondary}; ;
+    color:${(props) => props.theme.colors.primary}; ;
   }
 }
 
@@ -69,23 +70,7 @@ body {
     font-family: ${(props) => props.theme?.font?.ltr};
   }
 }
-body.rtl {
-  font-family: ${(props) => props.theme?.font?.rtl};
-  button,input,optgroup,select,textarea,h1,h2,h3,h4,h5, .Toastify__toast {
-    font-family: ${(props) => props.theme?.font?.rtl};
-  }
-}
 
-.mi-select-dropdown {
-  display: block;
-  position: absolute;
-  top: 28px;
-  left: -1px;
-  z-index: 9999;
-}
-.mi-select-dropdown-hidden {
-    display: none;
-  }
 
   input[type="search"]::-webkit-search-decoration,
   input[type="search"]::-webkit-search-cancel-button,

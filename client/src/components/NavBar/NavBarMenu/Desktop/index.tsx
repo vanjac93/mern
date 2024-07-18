@@ -12,14 +12,15 @@ export default function NavBarMenu() {
         <Flex gap="2rem">
           {NAV_ITEMS.map((itm) => {
             return (
-              <NavigationItem key={itm.id} render={itm.content}>
+              // eslint-disable-next-line react/jsx-no-useless-fragment
+              <NavigationItem key={itm.id} render={<>{itm.content}</>}>
                 {itm.to ? (
-                  <Link to={itm.to}>{itm.text}</Link>
+                  <StyledLink to={itm.to}>{itm.text}</StyledLink>
                 ) : (
-                  <Flex style={{ cursor: 'pointer' }} gap={8} alignItems="center">
-                    <span>{itm.text}</span>
+                  <Test>
+                    <span style={{ fontWeight: 600 }}>{itm.text}</span>
                     <FaArrowDown className="caret" size="10px" />
-                  </Flex>
+                  </Test>
                 )}
               </NavigationItem>
             )
@@ -29,6 +30,34 @@ export default function NavBarMenu() {
     </Container>
   )
 }
+
+const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.text};
+  font-weight: 600;
+  text-decoration: none;
+  :hover {
+    color: ${({ theme }) => theme.colors.primary};
+    text-decoration: underline;
+  }
+`
+
+const Test = styled(Flex)`
+  cursor: pointer;
+  gap: 8px;
+  align-items: center;
+
+  .caret {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &[data-state='open'] {
+    color: ${({ theme }) => theme.colors.primary};
+
+    .caret {
+      transform: rotate(180deg);
+    }
+  }
+`
 
 const Container = styled.div`
   button,

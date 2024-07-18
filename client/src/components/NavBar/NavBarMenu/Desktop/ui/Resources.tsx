@@ -4,21 +4,22 @@ import { Typography } from '~/components/layout/Typography'
 import MenuItemContent from '../../components/MenuItemContent'
 import { RESOURCES_MENU, RESOURCES_MENU_SIDEBAR } from '../../util'
 import MenuCard from '../../components/Card'
+import styled from 'styled-components'
 
 export default function Resources() {
   const { t } = useTranslation()
 
   return (
     <MenuItemContent secondary={RESOURCES_MENU_SIDEBAR}>
-      <Flex width="100%" gap="3rem">
+      <Grid>
         <Flex flex={1} flexDirection="column">
-          <Typography fontWeight={800} fontSize="20px" mb="1rem">
+          <Typography fontWeight={900} fontSize="24px" mb="1rem">
             {t('The essentials')}
           </Typography>
           <Typography fontWeight={600} fontSize="16px" mb="0.5rem">
             {t('What is a landing page?')}
           </Typography>
-          <Typography mb="1rem">
+          <Typography mb="2rem">
             {t('Start converting more of your traffic with our complete guide to landing pages.')}
           </Typography>
           <Typography fontWeight={600} fontSize="16px" mb="0.5rem">
@@ -29,16 +30,24 @@ export default function Resources() {
           </Typography>
         </Flex>
         <Flex flex={1} flexDirection="column">
-          <Typography fontWeight={800} fontSize="20px" mb="1rem">
+          <Typography fontWeight={900} fontSize="24px" mb="1rem">
             {t('Learn with me')}
           </Typography>
-          <Flex flexDirection="column" gap="1rem">
+          <Flex flexDirection="column" gap="0.5rem">
             {RESOURCES_MENU.map((card, i) => (
               <MenuCard key={i} card={card} />
             ))}
           </Flex>
         </Flex>
-      </Flex>
+      </Grid>
     </MenuItemContent>
   )
 }
+
+const Grid = styled.div`
+  width: 100%;
+  display: grid;
+  /* grid-template-columns: repeat(2, auto); */
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+`

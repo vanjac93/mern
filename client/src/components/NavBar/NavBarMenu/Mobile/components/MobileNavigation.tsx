@@ -25,29 +25,43 @@ export default function MobileNavigation(props: Props) {
         {items.map((item) => {
           const { id, text } = item
           return (
-            <Flex
-              p="1rem"
-              onClick={() => setActiveItem(item)}
-              key={id}
-              alignItems="center"
-              gap="8px"
-            >
+            <NavigationMenuItem onClick={() => setActiveItem(item)} key={id}>
               <Typography fontSize={24}>{text}</Typography>
               <IoIosArrowForward className="arrow" size={24} />
-            </Flex>
+            </NavigationMenuItem>
           )
         })}
       </Flex>
       <Flex flexDirection="column" className="active-menu">
-        <Flex p="1rem" onClick={() => setActiveItem(null)} alignItems="center" gap="1rem">
+        <NavigationBack onClick={() => setActiveItem(null)}>
           <IoIosArrowBack size={24} />
           <Typography fontSize={24}>{activeItem?.text}</Typography>
-        </Flex>
+        </NavigationBack>
         {activeItem?.content}
       </Flex>
     </Container>
   )
 }
+
+const NavigationBack = styled(Flex)`
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.bgAlt};
+  }
+`
+
+const NavigationMenuItem = styled(Flex)`
+  padding: 1rem;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.bgAlt};
+  }
+`
 
 const Container = styled(Flex)<{ $activeItem: boolean }>`
   position: relative;

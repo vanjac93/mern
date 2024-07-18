@@ -17,7 +17,6 @@ export default function Product() {
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 250px);
-  grid-template-rows: auto;
-  gap: 3rem;
+  grid-template-columns: repeat(2, auto);
+  gap: 1rem;
 `

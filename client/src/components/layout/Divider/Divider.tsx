@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components'
 import { Box } from '../Box'
 import { background, space } from 'styled-system'
 
-const StyledDivider = styled(Box)<{ $vertical?: boolean }>`
-  background-color: ${({ theme }) => theme.colors.primary};
+const StyledDivider = styled(Box)<{ $vertical?: boolean; $color?: string }>`
+  background-color: ${({ theme, $color }) => $color || theme.colors.primary};
   line-height: 1.5;
   user-select: none;
   ${({ $vertical }) =>

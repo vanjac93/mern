@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { hexToRGB } from '~/utils/style'
 
 export const NavigationMenuLink = styled(NavigationMenuPrimitive.Link)`
-  color: ${({ theme }) => theme.colors.primary};
   display: block;
   cursor: pointer;
   text-decoration: none;
