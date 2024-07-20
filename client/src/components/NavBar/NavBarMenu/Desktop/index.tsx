@@ -15,10 +15,12 @@ export default function NavBarMenu() {
               // eslint-disable-next-line react/jsx-no-useless-fragment
               <NavigationItem key={itm.id} render={<>{itm.content}</>}>
                 {itm.to ? (
-                  <StyledLink to={itm.to}>{itm.text}</StyledLink>
+                  <StyledLink to={itm.to}>
+                    <Test>{itm.text}</Test>
+                  </StyledLink>
                 ) : (
                   <Test>
-                    <span style={{ fontWeight: 600 }}>{itm.text}</span>
+                    <span style={{ fontWeight: 500 }}>{itm.text}</span>
                     <FaArrowDown className="caret" size="10px" />
                   </Test>
                 )}
@@ -33,7 +35,7 @@ export default function NavBarMenu() {
 
 const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.text};
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   :hover {
     color: ${({ theme }) => theme.colors.primary};
@@ -43,8 +45,14 @@ const StyledLink = styled(Link)`
 
 const Test = styled(Flex)`
   cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
   gap: 8px;
   align-items: center;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.bgAlt};
+  }
 
   .caret {
     transition: transform 0.3s ease-in-out;
@@ -52,6 +60,7 @@ const Test = styled(Flex)`
 
   &[data-state='open'] {
     color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.bgAlt};
 
     .caret {
       transform: rotate(180deg);

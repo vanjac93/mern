@@ -8,6 +8,8 @@ import orange576 from '~/assets/images/orange-576.jpg'
 import orange768 from '~/assets/images/orange-768.jpg'
 import orange1200 from '~/assets/images/orange-1200.jpg'
 import orange1970 from '~/assets/images/orange-1970.jpg'
+import waveImg from '~/assets/bird-transparent.png'
+
 interface HeroProps {
   title: string
   text: string
@@ -21,13 +23,13 @@ const getImageUrl = (path: string) => {
 
 export default function Hero({ title, text, action, img }: HeroProps) {
   return (
-    <HeroContainer>
+    <HeroContainer maxHeight={['unset', 'unset', 'null', '80vw', '80vw', '80vw']}>
       <Flex flexDirection="column" flex={1} alignItems="center">
         <Heading
           fontWeight={600}
           textAlign="center"
           mb={['2rem', '2rem', '2rem', '1rem']}
-          fontSize="3rem"
+          fontSize={['3rem', '4rem']}
         >
           {title}
         </Heading>
@@ -39,12 +41,13 @@ export default function Hero({ title, text, action, img }: HeroProps) {
       <Box flex={1}>
         <img
           style={{ borderRadius: '10px' }}
-          srcSet="/src/assets/images/orange-576.jpg 576w,
-          /src/assets/images/orange-768.jpg 768w,
-           /src/assets/images/orange-1200.jpg 1200w,
-           /src/assets/images/orange-1970.jpg 1970w,
-           /src/assets/images/orange.jpg
-          "
+          src={waveImg}
+          // srcSet="/src/assets/images/orange-576.jpg 576w,
+          // /src/assets/images/orange-768.jpg 768w,
+          //  /src/assets/images/orange-1200.jpg 1200w,
+          //  /src/assets/images/orange-1970.jpg 1970w,
+          //  /src/assets/images/orange.jpg
+          // "
           onLoad={(e) => {
             console.log('loaded', e)
           }}

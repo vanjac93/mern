@@ -18,7 +18,7 @@ export default function MenuCard({ card }: { card: MenuCardType }) {
       <IconContext.Provider value={{ size: description ? '2rem' : '1.5rem' }}>
         {icon}
       </IconContext.Provider>
-      <Typography fontWeight={description ? 500 : 400} className="title">
+      <Typography fontWeight={hasDescription ? 600 : 400} className="title">
         {title}
       </Typography>
       {hasDescription && <StyledDescription color="textSecondary">{description}</StyledDescription>}
