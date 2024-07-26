@@ -15,7 +15,7 @@ export default function Page(props: PropsWithChildren<PageProps>) {
   return (
     <>
       <NavBar />
-      <main>{children}</main>
+      <main style={{ marginTop: 80 }}>{children}</main>
     </>
   )
 }

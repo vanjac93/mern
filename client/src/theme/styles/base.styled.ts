@@ -4,6 +4,11 @@ import { hexToRGB } from '~/utils/style'
 
 export const GlobalBaseStyle = createGlobalStyle`
 
+  :root {
+    --logos-height: 100px;
+    --menu-height: 80px;
+  }
+
 html, body{
   font-size: 16px;
 }

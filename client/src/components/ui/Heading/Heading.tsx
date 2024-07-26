@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color, space, typography } from 'styled-system'
+import { color, space, textStyle, typography } from 'styled-system'
 
 import { HeadingProps } from './types'
 
@@ -10,6 +10,7 @@ const Heading = styled.div<HeadingProps>`
   ${typography}
   ${color}
   ${space}
+  ${textStyle}
 `
 
 Heading.defaultProps = {

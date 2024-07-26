@@ -26,7 +26,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps & HTMLAttributes<HTMLBu
         <Flex gap={8} alignItems="center">
           {loading && <Loading small={size === 'small'} />}
           {text && (
-            <Typography as={'span'} lineHeight="1" fontSize={'inherit'}>
+            <Typography className="btn-text" as={'span'} lineHeight="1" fontSize={'inherit'}>
               {text}
             </Typography>
           )}

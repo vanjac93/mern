@@ -1,72 +1,70 @@
 import { Heading } from '~/components/ui/Heading'
-import { ReactNode } from 'react'
 import { Typography } from '../Typography'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Box, Flex } from '../Box'
-import orange from '~/assets/images/orange.jpg'
-import orange576 from '~/assets/images/orange-576.jpg'
-import orange768 from '~/assets/images/orange-768.jpg'
-import orange1200 from '~/assets/images/orange-1200.jpg'
-import orange1970 from '~/assets/images/orange-1970.jpg'
-import waveImg from '~/assets/bird-transparent.png'
+import { useTranslation } from 'react-i18next'
+import Button from '~/components/ui/Button'
+import { FaICursor } from 'react-icons/fa6'
 
-interface HeroProps {
-  title: string
-  text: string
-  img: string
-  action: ReactNode
-}
-
-const getImageUrl = (path: string) => {
-  return new URL(`../assets/images/${path}`, import.meta.url).href
-}
-
-export default function Hero({ title, text, action, img }: HeroProps) {
+export default function Hero() {
+  const { t } = useTranslation()
   return (
-    <HeroContainer maxHeight={['unset', 'unset', 'null', '80vw', '80vw', '80vw']}>
-      <Flex flexDirection="column" flex={1} alignItems="center">
-        <Heading
-          fontWeight={600}
-          textAlign="center"
-          mb={['2rem', '2rem', '2rem', '1rem']}
-          fontSize={['3rem', '4rem']}
-        >
-          {title}
-        </Heading>
-        <Typography mb="2.5rem" fontWeight={400} fontSize="1.5rem" textAlign="center">
-          {text}
+    <HeroContainer
+      p={{
+        _: '4rem 2rem'
+      }}
+    >
+      <Heading
+        // m={{
+        //   _: '4rem 2rem'
+        // }}
+        fontWeight={100}
+        fontSize={{
+          xl: '6rem',
+          _: '88px'
+          // xxl: '6rem'
+        }}
+      >
+        Make <StyledContentSpan>content</StyledContentSpan> your{' '}
+        <Typography fontSize="inherit" as="span" fontWeight={800}>
+          competitive advantage
         </Typography>
-        {action}
+      </Heading>
+      <Typography fontWeight={400} fontSize="1.5rem">
+        Treat content as data—actionable and scalable across your business—with the Sanity
+        Composable Content Cloud.
+      </Typography>
+      <Flex gap="1rem">
+        <Button size="large" text="Start building" />
+        <Button size="large" variant="outlined" text="Book a demo" />
       </Flex>
-      <Box flex={1}>
-        <img
-          style={{ borderRadius: '10px' }}
-          src={waveImg}
-          // srcSet="/src/assets/images/orange-576.jpg 576w,
-          // /src/assets/images/orange-768.jpg 768w,
-          //  /src/assets/images/orange-1200.jpg 1200w,
-          //  /src/assets/images/orange-1970.jpg 1970w,
-          //  /src/assets/images/orange.jpg
-          // "
-          onLoad={(e) => {
-            console.log('loaded', e)
-          }}
-          alt="Hero"
-        />
-      </Box>
+      <Flex alignItems="center" gap="1rem">
+        <FaICursor />
+        <code>npm install vanja</code>
+      </Flex>
     </HeroContainer>
   )
 }
 
 const HeroContainer = styled(Flex)`
-  width: 100%;
+  flex-direction: column;
   align-items: center;
-  gap: 3rem;
-  ${({ theme }) => theme.mq.md} {
-    flex-direction: column;
-  }
+  justify-content: center;
+  gap: 2rem;
+  text-wrap: balance;
+  text-align: center;
+  min-height: calc(100vh - var(--menu-height) - var(--logos-height) - 4rem);
+`
 
-  ${({ theme }) => theme.mq.sm} {
-    max-width: 85%;
+const StyledContentSpan = styled.span`
+  color: ${({ theme }) => theme.colors.textUi};
+  font-size: inherit;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    z-index: -1;
+    background-color: ${({ theme }) => theme.colors.primary};
   }
 `

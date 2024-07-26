@@ -18,6 +18,10 @@ export default function NavBar() {
 
 const StyledNav = styled.nav`
   height: 80px;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  /* background-color: ${({ theme }) => theme.colors.borderSecondary}; */
   display: flex;
   justify-content: space-between;
   background-color: #fff;

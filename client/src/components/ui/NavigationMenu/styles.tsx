@@ -180,7 +180,7 @@ export const StyledNavMenuViewport = styled(NavigationMenuPrimitive.Viewport)`
 
   & > * {
     &:not(:last-child) {
-      border-bottom: 1px solid ${({ theme }) => theme.colors.borderSecondary};
+      border-bottom: 1px solid ${({ theme }) => theme.colors.bgAlt};
     }
   }
 `

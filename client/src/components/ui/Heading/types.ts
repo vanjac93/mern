@@ -1,4 +1,4 @@
-import { SpaceProps, TypographyProps } from 'styled-system'
+import { SpaceProps, TextStyleProps, TypographyProps } from 'styled-system'
 
 export const tags = {
   H1: 'h1',
@@ -9,4 +9,4 @@ export const tags = {
   H6: 'h6'
 }
 
-export interface HeadingProps extends TypographyProps, SpaceProps {}
+export interface HeadingProps extends TypographyProps, SpaceProps, TextStyleProps {}

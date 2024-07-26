@@ -72,7 +72,7 @@ export const StyledDropdownMenuItem = styled(DropdownMenuPrimitive.DropdownMenuI
     background-color: ${({ theme }) => hexToRGB(theme.colors.bg, 0.2)};
   }
   &:not(:first-child) {
-    border-top: 1px solid ${({ theme }) => theme.colors.borderSecondary};
+    border-top: 1px solid ${({ theme }) => theme.colors.bgAlt};
   }
 
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
