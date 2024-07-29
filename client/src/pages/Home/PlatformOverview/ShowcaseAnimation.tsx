@@ -3,10 +3,14 @@ import styled, { css } from 'styled-components'
 import { Box, Flex } from '~/components/layout/Box'
 import { Typography } from '~/components/layout/Typography'
 import { ActiveItemType } from './types'
+import StudioAnimation from './animations/StudioAnimation'
+import ContentLakeAnimation from './animations/ContentLakeAnimation'
+import ApisAnimation from './animations/ApisAnimation'
+import { TabsPaneType } from '~/components/ui/Tabs/Tabs'
 
 export default function ShowcaseAnimation() {
   const [activeItem, setActiveItem] = useState<ActiveItemType>('studio')
-  console.log(activeItem)
+
   function onClick(id: ActiveItemType) {
     setActiveItem(id)
   }
@@ -32,24 +36,19 @@ export default function ShowcaseAnimation() {
     )
   }
 
-  function renderGrid() {
+  function renderAnimations() {
     return (
-      <StyledGrid>
-        <StyledImg
-          active={activeItem === 'studio'}
-          row={1}
-          src="https://dummyimage.com/300x200/#f2f2f2/aaa"
-        />
-        <StyledImg
-          active={activeItem === 'apis'}
-          row={2}
-          src="https://dummyimage.com/300x200/#f2f2f2/aaa"
-        />
-        <StyledImg
-          active={activeItem === 'content-lake'}
-          row={3}
-          src="https://dummyimage.com/300x200/#f2f2f2/aaa"
-        />
+      <AnimationsContainer>
+        <StudioAnimation />
+        <ApisAnimation />
+        <ContentLakeAnimation />
+      </AnimationsContainer>
+    )
+  }
+
+  function renderCards() {
+    return (
+      <>
         <ShowcaseCard
           column={3}
           row={1}
@@ -77,17 +76,32 @@ export default function ShowcaseAnimation() {
           onClick={onClick}
           text="A no-ops storage and distribution layer that syncs content and data for use by teams across your organization."
         />
-      </StyledGrid>
+      </>
     )
   }
 
   return (
-    <ShowcaseContainer>
-      {renderSideImages()}
-      {renderGrid()}
-    </ShowcaseContainer>
+    <Flex alignItems="center" flexDirection="column" gap="4rem">
+      <ShowcaseContainer>
+        {/* {renderSideImages()} */}
+        <StyledGrid>
+          {renderAnimations()}
+          {renderCards()}
+        </StyledGrid>
+      </ShowcaseContainer>
+    </Flex>
   )
 }
+
+const AnimationsContainer = styled.div`
+  grid-row-start: 1;
+  grid-row-end: 4;
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+`
 
 interface ShowcaseCardProps {
   id: ActiveItemType
@@ -127,6 +141,10 @@ const CardContainer = styled(Flex)<{ row: number; column: number }>`
       background-color: ${({ theme }) => theme.colors.bgAlt};
     }
   }
+
+  ${({ theme }) => theme.mq.sm} {
+    display: none;
+  }
 `
 
 const StyledBtn = styled(Flex)`
@@ -145,16 +163,6 @@ const StyledGrid = styled(Box)`
   gap: 1rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: repeat(3, auto);
-`
-
-const StyledImg = styled.img<{ row: number; active?: boolean }>`
-  grid-column: 2;
-  grid-row: ${({ row }) => row};
-  ${({ active }) =>
-    active &&
-    css`
-      transform: skew(15deg, 15deg);
-    `}
 `
 
 const ShowcaseContainer = styled(Box)`

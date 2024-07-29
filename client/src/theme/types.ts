@@ -19,6 +19,7 @@ interface ThemeFontType {
 interface ThemeColorsType {
   bg: string
   bgAlt: string
+  bgAlt2: string
   text: string
   textSecondary: string
   success: string

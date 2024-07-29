@@ -11,6 +11,8 @@ const colors: ThemeType['colors'] = {
   errorSecondary: tinycolor('#F44436').lighten().toHexString(),
   bg: '#fff',
   bgAlt: '#e6eefd',
+  // bgAlt2: tinycolor('#A9A9A9').lighten(20).toHexString(),
+  bgAlt2: '#1b1d20',
   secondary: '#0163aa',
   borderSecondary: '#e6eefd',
   uiBackground: '#B8D5B8',

@@ -28,7 +28,8 @@ const Container = styled(Section)`
   align-items: center;
   position: relative;
   flex-direction: column;
-  /* background: ${({ theme }) => theme.colors.primary}; */
+  text-align: center;
+  text-wrap: balance;
   background-color: black;
   color: white;
 `
