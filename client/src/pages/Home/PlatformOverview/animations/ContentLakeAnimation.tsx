@@ -16,7 +16,7 @@ const whileHover = {
   fill: '#f2f2f2'
 }
 
-export default function ContentLakeAnimation() {
+export default function ContentLakeAnimation({ isHovering }: { isHovering: boolean }) {
   return (
     <StyledSvg
       viewport={{ once: true }}
